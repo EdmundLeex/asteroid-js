@@ -1,4 +1,5 @@
 ## TODOs
-- Instantiate all possible bullets when game begins.
-- One setInterval handles all.
-- request animation frame
+- Link list object pooling
+- Better collision detection for ship
+- Graphic
+- Game over logic
