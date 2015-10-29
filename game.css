@@ -1,0 +1,47 @@
+html, body, canvas {
+  padding: 0px;
+  margin: 0px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+#gameover {
+	background-color: red;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	width: 30%;
+	height: 20%;
+}
+
+.show {
+	z-index: 100;
+	opacity: 1;
+}
+
+.hide {
+	z-index: -10;
+	opacity: 0;
+}
+
+.gameover-text {
+	text-align: center;
+	padding: 5%;
+	font-size: x-large;
+}
+
+.restart {
+	text-align: center;
+	padding: 2%;
+	margin-left: 30%;
+	margin-right: 30%;
+	font-size: large;
+	border: 1px solid;
+	border-radius: 5%;
+}
+
+.restart:hover {
+	cursor: pointer;
+	background-color: rgba(255,255,255,0.5);
+}
