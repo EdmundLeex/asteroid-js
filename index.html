@@ -10,6 +10,8 @@
       <div class="gameover-text">GAME OVER</div>
       <div id="restart" class="restart">RESTART</div>
     </div>
+
+    <div id="timer"></div>
     <canvas id="game-canvas"></canvas>
 
 
@@ -23,8 +25,10 @@
     <script src="lib/weaponary.js"></script>
     <script src="lib/invincible.js"></script>
     <script src="lib/all_dir_fire.js"></script>
+    <script src="lib/timer.js"></script>
     <script src="lib/game.js"></script>
     <script src="lib/gameView.js"></script>
+
     <script>
       var restart = document.getElementById("restart");
       restart.addEventListener('click', startGame);
@@ -33,9 +37,12 @@
         var gameover = document.getElementById("gameover");
         gameover.classList.remove("show");
         gameover.classList.add("hide");
+
         var canvasEl = document.getElementById("game-canvas");
         canvasEl.height = window.innerHeight;
         canvasEl.width = window.innerWidth;
+
+        var timerDiv = document.getElementById("timer");
 
         new Asteroids.GameView(
           canvasEl.height,
