@@ -10,13 +10,18 @@ canvas {
 }
 
 #gameover {
-	background-color: red;
 	position: absolute;
 	left: 50%;
 	top: 50%;
 	transform: translateX(-50%) translateY(-50%);
 	width: 30%;
 	height: 20%;
+	border: 1px solid lightgreen;
+	border-radius: 10px;
+	background: rgba(0,0,0,0.5);
+	color: white;
+	font-family: arial;
+	box-shadow: 3px 3px 3px black;
 }
 
 .show {
@@ -41,13 +46,19 @@ canvas {
 	margin-left: 30%;
 	margin-right: 30%;
 	font-size: large;
-	border: 1px solid;
+	font-weight: 800;
+	border: 1px solid lightgreen;
 	border-radius: 5%;
+	background-color: white;
+	color: black;
+	box-shadow: 5px 5px;
 }
 
 .restart:hover {
 	cursor: pointer;
-	background-color: rgba(255,255,255,0.5);
+	background-color: black;
+	color: white;
+	box-shadow: none;
 }
 
 #timer {
