@@ -5,6 +5,10 @@ html, body, canvas {
   overflow-y: hidden;
 }
 
+canvas {
+	background: url('./assets/bg.jpg') no-repeat;
+}
+
 #gameover {
 	background-color: red;
 	position: absolute;
