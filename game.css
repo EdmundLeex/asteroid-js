@@ -6,7 +6,7 @@ html, body, canvas {
 }
 
 canvas {
-	background: url('./assets/bg.jpg') no-repeat;
+	background: url('./assets/bg.jpg') no-repeat center center fixed;
 }
 
 #gameover {
