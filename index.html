@@ -37,8 +37,8 @@
 
     <script>
       var canvasEl = document.getElementById("game-canvas");
-      canvasEl.height = window.innerHeight;
-      canvasEl.width = window.innerWidth;
+      canvasEl.height = window.innerHeight * 0.9;
+      canvasEl.width = window.innerWidth * 0.98;
       var gameView = new Asteroids.GameView(
                            canvasEl.height,
                            canvasEl.width
