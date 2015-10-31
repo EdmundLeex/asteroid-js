@@ -31,6 +31,14 @@
     <script src="lib/gameView.js"></script>
 
     <script>
+      var canvasEl = document.getElementById("game-canvas");
+      canvasEl.height = window.innerHeight;
+      canvasEl.width = window.innerWidth;
+      var gameView = new Asteroids.GameView(
+                           canvasEl.height,
+                           canvasEl.width
+                         );
+
       var restart = document.getElementById("restart");
       restart.addEventListener('click', startGame);
 
@@ -39,16 +47,9 @@
         gameover.classList.remove("show");
         gameover.classList.add("hide");
 
-        var canvasEl = document.getElementById("game-canvas");
-        canvasEl.height = window.innerHeight;
-        canvasEl.width = window.innerWidth;
-
         var timerDiv = document.getElementById("timer");
 
-        new Asteroids.GameView(
-          canvasEl.height,
-          canvasEl.width
-        ).start(canvasEl);
+        gameView.start(canvasEl);
       }
 
       startGame();
