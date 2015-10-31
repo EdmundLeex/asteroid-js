@@ -6,9 +6,14 @@
   </head>
 
   <body>
-    <div id="gameover" class="hide">
-      <div class="gameover-text">GAME OVER</div>
-      <div id="restart" class="restart">RETRY</div>
+    <div id="start-game" class="modal show">
+      <div class="modal-title">WELCOME</div>
+      <div id="start" class="btn">START</div>
+    </div>
+
+    <div id="gameover" class="modal hide">
+      <div class="modal-title">GAME OVER</div>
+      <div id="restart" class="btn">RETRY</div>
     </div>
 
     <div id="timer"></div>
@@ -39,20 +44,32 @@
                            canvasEl.width
                          );
 
-      var restart = document.getElementById("restart");
-      restart.addEventListener('click', startGame);
+      var startBtn = document.getElementById('start');
+      startBtn.addEventListener('click', start);
+
+      var restartBtn = document.getElementById("restart");
+      restartBtn.addEventListener('click', restart);
+
+      function start() {
+        var modal = document.getElementById('start-game');
+        modal.classList.remove('show');
+        modal.classList.add('hide');
+        startGame();
+      }
+
+      function restart() {
+        var modal = document.getElementById("gameover");
+        modal.classList.remove("show");
+        modal.classList.add("hide");
+        startGame();
+      }
 
       function startGame() {
-        var gameover = document.getElementById("gameover");
-        gameover.classList.remove("show");
-        gameover.classList.add("hide");
-
-        var timerDiv = document.getElementById("timer");
-
+        // var timerDiv = document.getElementById("timer");
         gameView.start(canvasEl);
       }
 
-      startGame();
+      // startGame();
     </script>
   </body>
 </html>

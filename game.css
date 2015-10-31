@@ -9,7 +9,7 @@ canvas {
 	background: url('./assets/bg.jpg') no-repeat center center fixed;
 }
 
-#gameover {
+.modal {
 	position: absolute;
 	left: 50%;
 	top: 50%;
@@ -34,13 +34,13 @@ canvas {
 	opacity: 0;
 }
 
-.gameover-text {
+.modal-title {
 	text-align: center;
 	padding: 5%;
 	font-size: x-large;
 }
 
-.restart {
+.btn {
 	text-align: center;
 	padding: 2%;
 	margin-left: 30%;
@@ -54,7 +54,7 @@ canvas {
 	box-shadow: 5px 5px;
 }
 
-.restart:hover {
+.btn:hover {
 	cursor: pointer;
 	background-color: black;
 	color: white;
