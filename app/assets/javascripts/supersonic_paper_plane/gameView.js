@@ -143,6 +143,8 @@
       if (that.game.isOver) {
         cancelAnimationFrame(root.reqAFId);
         that.endGame(canvasEl);
+        that.timer.stop();
+        debugger
       }
     };
     requestAnimationFrame(animate);

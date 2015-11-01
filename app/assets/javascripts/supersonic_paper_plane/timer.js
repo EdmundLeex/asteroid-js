@@ -36,10 +36,6 @@
     draw: function(ctx, time) {
       ctx.fillStyle = 'white';
 
-      // ctx.strokeStyle = this.color;
-      // ctx.fillStyle = Ship.COLOR;
-
-      // ctx.lineWidth = 1;
       ctx.shadowColor = "black";
       ctx.shadowOffsetX = 2;
       ctx.shadowOffsetY = 2;
