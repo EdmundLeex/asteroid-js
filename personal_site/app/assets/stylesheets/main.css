@@ -1879,7 +1879,7 @@
 		.icon:before {
 			-moz-osx-font-smoothing: grayscale;
 			-webkit-font-smoothing: antialiased;
-			font-family: FontAwesome;
+			/*font-family: FontAwesome;*/
 			font-style: normal;
 			font-weight: normal;
 			text-transform: none !important;
@@ -1897,11 +1897,11 @@
 			border-radius: 3px;
 			border: solid 2px #fff;
 			display: inline-block;
-			font-size: 1.35em;
-			height: calc(3em + 2px);
-			line-height: 3em;
+			font-size: 2em;
+			height: calc(2.5em + 2px);
+			line-height: 2.5em;
 			text-align: center;
-			width: calc(3em + 2px);
+			width: calc(2.5em + 2px);
 		}
 
 			.icon.major:before {
@@ -2510,7 +2510,7 @@
 			}
 
 		.spotlight .content {
-			padding: 2em 4em 0.1em 4em ;
+			padding: 1em 3em 0.1em 3em ;
 			-moz-order: 2;
 			-webkit-order: 2;
 			-ms-order: 2;
@@ -2518,6 +2518,19 @@
 			max-width: 48em;
 			width: 60%;
 		}
+
+			.spotlight .content h3 {
+				margin-bottom: 1em;
+			}
+
+			.spotlight .content p {
+				margin-bottom: 1em;
+			}
+
+			.spotlight .content ul {
+				font-weight: 200;
+				font-size: 0.7em;
+			}
 
 		.spotlight:nth-child(2n) {
 			-moz-flex-direction: row-reverse;
