@@ -1,18 +1,18 @@
 (function(root) {
-  if (typeof root.Asteroids === 'undefined') {
-    root.Asteroids = {};
+  if (typeof root.SupersonicPaperPlane === 'undefined') {
+    root.SupersonicPaperPlane = {};
   }
 
-  var Asteroids = root.Asteroids;
-  var Bullet = Asteroids.Bullet;
-  var Util = Asteroids.Util;
+  var SupersonicPaperPlane = root.SupersonicPaperPlane;
+  var Bullet = SupersonicPaperPlane.Bullet;
+  var Util = SupersonicPaperPlane.Util;
 
-  var Ship = Asteroids.Ship = function (attrs, game) {
-    Asteroids.MovingObject.call(this, attrs, game);
+  var Ship = SupersonicPaperPlane.Ship = function (attrs, game) {
+    SupersonicPaperPlane.MovingObject.call(this, attrs, game);
     this.reset();
   };
 
-  Util.inherits(Ship, Asteroids.MovingObject);
+  Util.inherits(Ship, SupersonicPaperPlane.MovingObject);
 
   Ship.COLOR = "#ffffff";
   Ship.RADIUS = 15;
@@ -138,7 +138,7 @@
     this.weaponCountdownTM = setTimeout(this.weaponReminder.bind(this, weapon), 15000);
     this.fireBullet = weapon.fire;
     this.color = weapon.color2;
-    if (weapon.constructor === Asteroids.Invincibility) {
+    if (weapon.constructor === SupersonicPaperPlane.Invincibility) {
       this.toggleInvincibility(true);
     }
   };

@@ -1,19 +1,19 @@
 (function(root) {
-  if (typeof root.Asteroids === 'undefined') {
-    root.Asteroids = {};
+  if (typeof root.SupersonicPaperPlane === 'undefined') {
+    root.SupersonicPaperPlane = {};
   }
 
-  var Asteroids = root.Asteroids;
-  var GameView = Asteroids.GameView = function (height, width, bgHeight, bgWidth) {
+  var SupersonicPaperPlane = root.SupersonicPaperPlane;
+  var GameView = SupersonicPaperPlane.GameView = function (height, width, bgHeight, bgWidth) {
     this.height = height;
     this.width = width;
-    this.game = new Asteroids.Game(this.height, this.width);
-    this.gameBackground = new Asteroids.GameBackground(bgHeight, bgWidth);
+    this.game = new SupersonicPaperPlane.Game(this.height, this.width);
+    this.gameBackground = new SupersonicPaperPlane.GameBackground(bgHeight, bgWidth);
     this.timer = new Timer();
     this.intervals = {};
   };
 
-  var Timer = Asteroids.Timer;
+  var Timer = SupersonicPaperPlane.Timer;
 
   GameView.FPS = 60;
 

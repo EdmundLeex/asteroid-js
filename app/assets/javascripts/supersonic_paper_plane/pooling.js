@@ -1,15 +1,15 @@
 (function(root){
-	if (typeof root.Asteroids === 'undefined') {
-    root.Asteroids = {};
+	if (typeof root.SupersonicPaperPlane === 'undefined') {
+    root.SupersonicPaperPlane = {};
   }
 
-  var LinkedListNode = Asteroids.LinkedListNode = function () {
+  var LinkedListNode = SupersonicPaperPlane.LinkedListNode = function () {
   	this.nextNode = null;
   	this.prevNode = null;
   	this.list = null;
   };
 
-  var LinkedList = Asteroids.LinkedList = function () {
+  var LinkedList = SupersonicPaperPlane.LinkedList = function () {
   	this.first = null;
   	this.last = null;
   	this.length = 0;

@@ -1,13 +1,13 @@
 (function(root) {
-  if (typeof root.Asteroids === 'undefined') {
-    root.Asteroids = {};
+  if (typeof root.SupersonicPaperPlane === 'undefined') {
+    root.SupersonicPaperPlane = {};
   }
 
-  var Asteroids = root.Asteroids;
-  // var Game = Asteroids.Game;
+  var SupersonicPaperPlane = root.SupersonicPaperPlane;
+  // var Game = SupersonicPaperPlane.Game;
 
-  var MovingObject = Asteroids.MovingObject = function(attrs, game) {
-    Asteroids.LinkedListNode.call(this);
+  var MovingObject = SupersonicPaperPlane.MovingObject = function(attrs, game) {
+    SupersonicPaperPlane.LinkedListNode.call(this);
     this.pos = attrs.pos;
     // this.centerX = attrs.pos[0];
     // this.centerY = attrs.pos[1];
@@ -45,7 +45,7 @@
   };
 
   MovingObject.prototype.isCollidedWith = function (otherObject) {
-    var dist = Asteroids.Util.calcDist(this.pos, otherObject.pos);
+    var dist = SupersonicPaperPlane.Util.calcDist(this.pos, otherObject.pos);
 
     if (otherObject !== this) {
       return dist <= (this.radius + otherObject.radius);

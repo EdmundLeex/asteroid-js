@@ -1,23 +1,23 @@
 (function(root){
-	if (typeof root.Asteroids === 'undefined') {
-    root.Asteroids = {};
+	if (typeof root.SupersonicPaperPlane === 'undefined') {
+    root.SupersonicPaperPlane = {};
   }
 
 	var _offScreen = function (game, maxSize) {
-		var randPos = Asteroids.Util.randomPos(game, maxSize);
+		var randPos = SupersonicPaperPlane.Util.randomPos(game, maxSize);
 		var randIdx= Math.floor(Math.random() * 4);
 		switch(randIdx){
 			case 0:
-				randPos = [randPos[0], Asteroids.Asteroid.RADIUS];
+				randPos = [randPos[0], SupersonicPaperPlane.Asteroid.RADIUS];
 				break;
 			case 1:
-				randPos = [randPos[0], game.height - Asteroids.Asteroid.RADIUS];
+				randPos = [randPos[0], game.height - SupersonicPaperPlane.Asteroid.RADIUS];
 				break;
 			case 2:
-				randPos = [Asteroids.Asteroid.RADIUS, randPos[1]];
+				randPos = [SupersonicPaperPlane.Asteroid.RADIUS, randPos[1]];
 				break;
 			case 3:
-				randPos = [game.width - Asteroids.Asteroid.RADIUS, randPos[1]];
+				randPos = [game.width - SupersonicPaperPlane.Asteroid.RADIUS, randPos[1]];
 				break;
 			default:
 				// no op
@@ -53,7 +53,7 @@
 		}
 	};
 
-	root.Asteroids.FormGroup = function (form) {
+	root.SupersonicPaperPlane.FormGroup = function (form) {
 		var game = this;
 		var MAX_SIZE = 50;
 
@@ -74,9 +74,9 @@
 			if (groupSize > game.asteroids.length) { groupSize = game.asteroids.length; }
 
 			if (groupVel[0]) {
-				modifier = [0, Asteroids.Asteroid.RADIUS - 1];
+				modifier = [0, SupersonicPaperPlane.Asteroid.RADIUS - 1];
 			} else {
-				modifier = [Asteroids.Asteroid.RADIUS - 1, 0];
+				modifier = [SupersonicPaperPlane.Asteroid.RADIUS - 1, 0];
 			}
 
 			for (var i  = 0; i < groupSize / 2 - 1; i++) {
@@ -91,7 +91,7 @@
 			for (var j  = 0; j < groupSize / 2 - 1; j++) {
 				asteroid = game.asteroids.pop();
 				asteroid.pos = [groupPos[0] + modifier[0] * j, groupPos[1] + modifier[1] * j];
-				asteroid.pos[modifier.indexOf(0)] += Asteroids.Asteroid.RADIUS;
+				asteroid.pos[modifier.indexOf(0)] += SupersonicPaperPlane.Asteroid.RADIUS;
 				asteroid.vel = groupVel;
 				// debugger
 				game.asteroidsInUse.push(asteroid);
@@ -121,13 +121,13 @@
 			for (var i = 0; i < MAX_SIZE; i++) {
 				asteroid = game.asteroids.pop();
 
-				asteroid.pos = Asteroids.Util.ensureDistanceFromShip(game);
+				asteroid.pos = SupersonicPaperPlane.Util.ensureDistanceFromShip(game);
 			}
 		};
 
 		var spawnBoids = function () {
 			var boid;
-			if (game.boids.length === Asteroids.Game.NUM_BOIDS) {
+			if (game.boids.length === SupersonicPaperPlane.Game.NUM_BOIDS) {
 				for (var i = 0; i < game.boids.length; i++) {
 					boid = game.boids.pop();
 

@@ -1,18 +1,18 @@
 (function(root) {
-  if (typeof root.Asteroids === 'undefined') {
-    root.Asteroids = {};
+  if (typeof root.SupersonicPaperPlane === 'undefined') {
+    root.SupersonicPaperPlane = {};
   }
 
-  var Asteroids = root.Asteroids;
+  var SupersonicPaperPlane = root.SupersonicPaperPlane;
 
-  var Bullet = Asteroids.Bullet = function (attrs, game) {
-    Asteroids.MovingObject.call(this, attrs, game);
+  var Bullet = SupersonicPaperPlane.Bullet = function (attrs, game) {
+    SupersonicPaperPlane.MovingObject.call(this, attrs, game);
     this.color = Bullet.COLOR;
     this.radius = Bullet.RADIUS;
     this.isWrappable = false;
   };
 
-  Asteroids.Util.inherits(Bullet,Asteroids.MovingObject);
+  SupersonicPaperPlane.Util.inherits(Bullet,SupersonicPaperPlane.MovingObject);
 
   Bullet.RADIUS = 2;
   Bullet.COLOR = "#FFFFFF";
@@ -20,8 +20,8 @@
 
   Bullet.prototype.isCollidedWith = function (otherObject) {
     return (
-      (otherObject.constructor === Asteroids.Asteroid || otherObject.constructor === Asteroids.Boid) &&
-      Asteroids.MovingObject.prototype.isCollidedWith.call(this, otherObject)
+      (otherObject.constructor === SupersonicPaperPlane.Asteroid || otherObject.constructor === SupersonicPaperPlane.Boid) &&
+      SupersonicPaperPlane.MovingObject.prototype.isCollidedWith.call(this, otherObject)
     );
   };
 
@@ -31,7 +31,7 @@
   };
 
   // Bullet.prototype.draw = function (ctx) {
-  //   var shipHeight = Asteroids.Ship.HEIGHT;
+  //   var shipHeight = SupersonicPaperPlane.Ship.HEIGHT;
 
   //   ctx.fillStyle = Bullet.COLOR;
   //   var x = (this.pos[0] + shipHeight),

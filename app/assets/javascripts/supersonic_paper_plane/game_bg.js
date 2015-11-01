@@ -1,11 +1,11 @@
 (function(root) {
-  if (typeof root.Asteroids === 'undefined') {
-    root.Asteroids = {};
+  if (typeof root.SupersonicPaperPlane === 'undefined') {
+    root.SupersonicPaperPlane = {};
   }
 
-  var Asteroids = root.Asteroids;
+  var SupersonicPaperPlane = root.SupersonicPaperPlane;
 
-  var GameBackground = Asteroids.GameBackground = function (height, width) {
+  var GameBackground = SupersonicPaperPlane.GameBackground = function (height, width) {
   	this.height = height;
   	this.width = width;
   };

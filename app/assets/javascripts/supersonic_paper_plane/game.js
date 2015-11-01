@@ -1,18 +1,18 @@
 (function(root) {
-  if (typeof root.Asteroids === 'undefined') {
-    root.Asteroids = {};
+  if (typeof root.SupersonicPaperPlane === 'undefined') {
+    root.SupersonicPaperPlane = {};
   }
 
-  var Asteroids = root.Asteroids;
-  var Ship = Asteroids.Ship;
-  var Bullet = Asteroids.Bullet;
-  var Asteroid = Asteroids.Asteroid;
-  var Boid = Asteroids.Boid;
-  var Invincibility = Asteroids.Invincibility;
-  var AllDirectionFire = Asteroids.AllDirectionFire;
-  var LinkedList = Asteroids.LinkedList;
+  var SupersonicPaperPlane = root.SupersonicPaperPlane;
+  var Ship = SupersonicPaperPlane.Ship;
+  var Bullet = SupersonicPaperPlane.Bullet;
+  var Asteroid = SupersonicPaperPlane.Asteroid;
+  var Boid = SupersonicPaperPlane.Boid;
+  var Invincibility = SupersonicPaperPlane.Invincibility;
+  var AllDirectionFire = SupersonicPaperPlane.AllDirectionFire;
+  var LinkedList = SupersonicPaperPlane.LinkedList;
 
-  var Game = Asteroids.Game = function (height, width) {
+  var Game = SupersonicPaperPlane.Game = function (height, width) {
     this.isOver = false;
     this.asteroids      = new LinkedList();
     this.asteroidsInUse = new LinkedList();
@@ -35,7 +35,7 @@
     this.spawnEnemy();
   };
 
-  Game.prototype.FormGroup = Asteroids.FormGroup;
+  Game.prototype.FormGroup = SupersonicPaperPlane.FormGroup;
 
   Game.NUM_ASTEROIDS = 1000;
   Game.NUM_BOIDS = 50;
@@ -43,7 +43,7 @@
   Game.OFF_SCREEN_BUFFER = 200;
 
   Game.prototype.init = function () {
-    this.addAsteroids(Game.NUM_ASTEROIDS);
+    this.addSupersonicPaperPlane(Game.NUM_ASTEROIDS);
     this.addBullets(Game.NUM_BULLETS);
     this.addBoids(Game.NUM_BOIDS);
 
@@ -86,7 +86,7 @@
     }
   };
 
-  Game.prototype.addAsteroids = function (num) {
+  Game.prototype.addSupersonicPaperPlane = function (num) {
     var game = this;
     var attr = {
       pos: [0, 0],

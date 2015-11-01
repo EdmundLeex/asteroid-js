@@ -1,9 +1,9 @@
 (function(root) {
-  if (typeof root.Asteroids === 'undefined') {
-    root.Asteroids = {};
+  if (typeof root.SupersonicPaperPlane === 'undefined') {
+    root.SupersonicPaperPlane = {};
   }
 
-  var Asteroids = root.Asteroids;
+  var SupersonicPaperPlane = root.SupersonicPaperPlane;
 
   // spawn at random pos
   // show up for 10 secs
@@ -12,12 +12,12 @@
   // - all dir firing
   // - freeze time
 
-  var Weaponary = Asteroids.Weaponary = function (game) {
-    Asteroids.LinkedListNode.call(this);
+  var Weaponary = SupersonicPaperPlane.Weaponary = function (game) {
+    SupersonicPaperPlane.LinkedListNode.call(this);
     this.color = "#ff7f00";
     this.radius = 6;
     this.game = game;
-    this.pos = Asteroids.Util.ensureDistanceFromShip(game);
+    this.pos = SupersonicPaperPlane.Util.ensureDistanceFromShip(game);
   };
 
   Weaponary.prototype.draw = function(ctx) {

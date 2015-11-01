@@ -1,16 +1,16 @@
 (function(root) {
-  if (typeof root.Asteroids === 'undefined') {
-    root.Asteroids = {};
+  if (typeof root.SupersonicPaperPlane === 'undefined') {
+    root.SupersonicPaperPlane = {};
   }
 
-  var Asteroids = root.Asteroids;
+  var SupersonicPaperPlane = root.SupersonicPaperPlane;
 
-  var Invincibility = Asteroids.Invincibility = function (game) {
-    Asteroids.Weaponary.call(this, game);
+  var Invincibility = SupersonicPaperPlane.Invincibility = function (game) {
+    SupersonicPaperPlane.Weaponary.call(this, game);
     this.color2 = "#ff0017";
   };
 
-  Asteroids.Util.inherits(Invincibility, Asteroids.Weaponary);
+  SupersonicPaperPlane.Util.inherits(Invincibility, SupersonicPaperPlane.Weaponary);
 
   Invincibility.prototype.fire = function () {
     // no gun

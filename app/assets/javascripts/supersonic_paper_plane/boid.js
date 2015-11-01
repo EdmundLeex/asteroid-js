@@ -1,12 +1,12 @@
 (function(root) {
-  if (typeof root.Asteroids === 'undefined') {
-    root.Asteroids = {};
+  if (typeof root.SupersonicPaperPlane === 'undefined') {
+    root.SupersonicPaperPlane = {};
   }
 
-  var Asteroids = root.Asteroids;
+  var SupersonicPaperPlane = root.SupersonicPaperPlane;
 
-  var Boid = Asteroids.Boid = function (game) {
-    this.pos = Asteroids.Util.ensureDistanceFromShip(game);
+  var Boid = SupersonicPaperPlane.Boid = function (game) {
+    this.pos = SupersonicPaperPlane.Util.ensureDistanceFromShip(game);
     this.game = game;
     this.radius = Boid.RADIUS;
     this.heading = Math.random() * 2 * Math.PI - Math.PI;

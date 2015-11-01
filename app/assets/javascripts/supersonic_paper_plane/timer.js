@@ -1,9 +1,9 @@
 (function(root){
-  if (typeof root.Asteroids === 'undefined') {
-    root.Asteroids = {};
+  if (typeof root.SupersonicPaperPlane === 'undefined') {
+    root.SupersonicPaperPlane = {};
   }
 
-  var Timer = Asteroids.Timer = function () {
+  var Timer = SupersonicPaperPlane.Timer = function () {
     this.startTime = null;
     this.endTime = null;
   }

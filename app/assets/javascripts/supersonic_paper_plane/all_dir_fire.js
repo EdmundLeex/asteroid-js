@@ -1,16 +1,16 @@
 (function(root) {
-  if (typeof root.Asteroids === 'undefined') {
-    root.Asteroids = {};
+  if (typeof root.SupersonicPaperPlane === 'undefined') {
+    root.SupersonicPaperPlane = {};
   }
 
-  var Asteroids = root.Asteroids;
+  var SupersonicPaperPlane = root.SupersonicPaperPlane;
 
-  var AllDirectionFire = Asteroids.AllDirectionFire = function (game) {
-    Asteroids.Weaponary.call(this, game);
+  var AllDirectionFire = SupersonicPaperPlane.AllDirectionFire = function (game) {
+    SupersonicPaperPlane.Weaponary.call(this, game);
     this.color2 = "#0068ff";
   };
 
-  Asteroids.Util.inherits(AllDirectionFire, Asteroids.Weaponary);
+  SupersonicPaperPlane.Util.inherits(AllDirectionFire, SupersonicPaperPlane.Weaponary);
 
   AllDirectionFire.prototype.fire = function () {
     var bulletLoad = [];
@@ -24,10 +24,10 @@
     // console.log(this.game.bullets.length);
 
     bulletLoad.forEach(function (bul, idx) {
-      bul.pos = [this.pos[0] + Math.sin(this.theta) * Asteroids.Ship.HEIGHT,
-                 this.pos[1] - Math.cos(this.theta) * Asteroids.Ship.HEIGHT];
-      bul.vel = [(Asteroids.Bullet.VELOCITY) * Math.cos(this.theta - Asteroids.Util.translateRadian(90 + (45 * idx))),
-                    (Asteroids.Bullet.VELOCITY) * Math.sin(this.theta - Asteroids.Util.translateRadian(90 + (45 * idx)))];
+      bul.pos = [this.pos[0] + Math.sin(this.theta) * SupersonicPaperPlane.Ship.HEIGHT,
+                 this.pos[1] - Math.cos(this.theta) * SupersonicPaperPlane.Ship.HEIGHT];
+      bul.vel = [(SupersonicPaperPlane.Bullet.VELOCITY) * Math.cos(this.theta - SupersonicPaperPlane.Util.translateRadian(90 + (45 * idx))),
+                    (SupersonicPaperPlane.Bullet.VELOCITY) * Math.sin(this.theta - SupersonicPaperPlane.Util.translateRadian(90 + (45 * idx)))];
     }, this);
   };
 })(this);

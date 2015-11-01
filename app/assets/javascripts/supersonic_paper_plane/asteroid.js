@@ -1,17 +1,17 @@
 (function(root) {
-  if (typeof root.Asteroids === 'undefined') {
-    root.Asteroids = {};
+  if (typeof root.SupersonicPaperPlane === 'undefined') {
+    root.SupersonicPaperPlane = {};
   }
 
-  var Asteroids = root.Asteroids;
+  var SupersonicPaperPlane = root.SupersonicPaperPlane;
 
-  var Asteroid = Asteroids.Asteroid = function (attrs, game) {
-    Asteroids.MovingObject.call(this, attrs, game);
+  var Asteroid = SupersonicPaperPlane.Asteroid = function (attrs, game) {
+    SupersonicPaperPlane.MovingObject.call(this, attrs, game);
     this.color = Asteroid.COLOR;
     this.radius = Asteroid.RADIUS;
   };
 
-  Asteroids.Util.inherits(Asteroid,Asteroids.MovingObject);
+  SupersonicPaperPlane.Util.inherits(Asteroid,SupersonicPaperPlane.MovingObject);
 
   Asteroid.COLOR = "#d00007";
   Asteroid.RADIUS = 5;
