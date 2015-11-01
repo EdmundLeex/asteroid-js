@@ -1,83 +1,73 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Asteroids</title>
-    <%= stylesheet_link_tag "supersonic_paper_plane.scss" %>
-  </head>
+<div id="start-game" class="modal show">
+  <div class="modal-title">WELCOME</div>
+  <div id="start" class="btn">START</div>
+</div>
 
-  <body>
-    <div id="start-game" class="modal show">
-      <div class="modal-title">WELCOME</div>
-      <div id="start" class="btn">START</div>
-    </div>
+<div id="gameover" class="modal hide">
+  <div class="modal-title">GAME OVER</div>
+  <div id="restart" class="btn">RETRY</div>
+</div>
 
-    <div id="gameover" class="modal hide">
-      <div class="modal-title">GAME OVER</div>
-      <div id="restart" class="btn">RETRY</div>
-    </div>
+<div id="timer"></div>
+<canvas id="game-background"></canvas>
+<canvas id="game-canvas"></canvas>
 
-    <div id="timer"></div>
-    <canvas id="game-background"></canvas>
-    <canvas id="game-canvas"></canvas>
+<%= javascript_include_tag "supersonic_paper_plane/group.js" %>
+<%= javascript_include_tag "supersonic_paper_plane/utils.js" %>
+<%= javascript_include_tag "supersonic_paper_plane/pooling.js" %>
+<%= javascript_include_tag "supersonic_paper_plane/movingObject.js" %>
+<%= javascript_include_tag "supersonic_paper_plane/asteroid.js" %>
+<%= javascript_include_tag "supersonic_paper_plane/bullet.js" %>
+<%= javascript_include_tag "supersonic_paper_plane/ship.js" %>
+<%= javascript_include_tag "supersonic_paper_plane/boid.js" %>
+<%= javascript_include_tag "supersonic_paper_plane/weaponary.js" %>
+<%= javascript_include_tag "supersonic_paper_plane/invincible.js" %>
+<%= javascript_include_tag "supersonic_paper_plane/all_dir_fire.js" %>
+<%= javascript_include_tag "supersonic_paper_plane/timer.js" %>
+<%= javascript_include_tag "supersonic_paper_plane/game.js" %>
+<%= javascript_include_tag "supersonic_paper_plane/game_bg.js" %>
+<%= javascript_include_tag "supersonic_paper_plane/gameView.js" %>
 
-    <%= javascript_include_tag "supersonic_paper_plane/group.js" %>
-    <%= javascript_include_tag "supersonic_paper_plane/utils.js" %>
-    <%= javascript_include_tag "supersonic_paper_plane/pooling.js" %>
-    <%= javascript_include_tag "supersonic_paper_plane/movingObject.js" %>
-    <%= javascript_include_tag "supersonic_paper_plane/asteroid.js" %>
-    <%= javascript_include_tag "supersonic_paper_plane/bullet.js" %>
-    <%= javascript_include_tag "supersonic_paper_plane/ship.js" %>
-    <%= javascript_include_tag "supersonic_paper_plane/boid.js" %>
-    <%= javascript_include_tag "supersonic_paper_plane/weaponary.js" %>
-    <%= javascript_include_tag "supersonic_paper_plane/invincible.js" %>
-    <%= javascript_include_tag "supersonic_paper_plane/all_dir_fire.js" %>
-    <%= javascript_include_tag "supersonic_paper_plane/timer.js" %>
-    <%= javascript_include_tag "supersonic_paper_plane/game.js" %>
-    <%= javascript_include_tag "supersonic_paper_plane/game_bg.js" %>
-    <%= javascript_include_tag "supersonic_paper_plane/gameView.js" %>
+<script>
+  var canvasEl = document.getElementById("game-canvas");
+  canvasEl.height = window.innerHeight * 0.9;
+  canvasEl.width = window.innerWidth * 0.98;
 
-    <script>
-      var canvasEl = document.getElementById("game-canvas");
-      canvasEl.height = window.innerHeight * 0.9;
-      canvasEl.width = window.innerWidth * 0.98;
+  var backgroundCanvas = document.getElementById("game-background");
+  backgroundCanvas.height = window.innerHeight;
+  backgroundCanvas.width = window.innerWidth;
 
-      var backgroundCanvas = document.getElementById("game-background");
-      backgroundCanvas.height = window.innerHeight;
-      backgroundCanvas.width = window.innerWidth;
+  var gameView = new Asteroids.GameView(
+                       canvasEl.height,
+                       canvasEl.width,
+                       backgroundCanvas.height,
+                       backgroundCanvas.width
+                     );
 
-      var gameView = new Asteroids.GameView(
-                           canvasEl.height,
-                           canvasEl.width,
-                           backgroundCanvas.height,
-                           backgroundCanvas.width
-                         );
+  var startBtn = document.getElementById('start');
+  startBtn.addEventListener('click', start);
 
-      var startBtn = document.getElementById('start');
-      startBtn.addEventListener('click', start);
+  var restartBtn = document.getElementById("restart");
+  restartBtn.addEventListener('click', restart);
 
-      var restartBtn = document.getElementById("restart");
-      restartBtn.addEventListener('click', restart);
+  function start() {
+    var modal = document.getElementById('start-game');
+    modal.classList.remove('show');
+    modal.classList.add('hide');
+    startGame();
+  }
 
-      function start() {
-        var modal = document.getElementById('start-game');
-        modal.classList.remove('show');
-        modal.classList.add('hide');
-        startGame();
-      }
+  function restart() {
+    var modal = document.getElementById("gameover");
+    modal.classList.remove("show");
+    modal.classList.add("hide");
+    startGame();
+  }
 
-      function restart() {
-        var modal = document.getElementById("gameover");
-        modal.classList.remove("show");
-        modal.classList.add("hide");
-        startGame();
-      }
+  function startGame() {
+    // var timerDiv = document.getElementById("timer");
+    gameView.start(canvasEl, backgroundCanvas);
+  }
 
-      function startGame() {
-        // var timerDiv = document.getElementById("timer");
-        gameView.start(canvasEl, backgroundCanvas);
-      }
-
-      // startGame();
-    </script>
-  </body>
-</html>
+  // startGame();
+</script>
