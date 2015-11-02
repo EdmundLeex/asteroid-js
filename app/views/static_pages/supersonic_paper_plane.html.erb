@@ -4,8 +4,21 @@
 </div>
 
 <div id="gameover" class="modal hide">
-  <div class="modal-title">GAME OVER</div>
-  <div id="restart" class="btn">RETRY</div>
+  <div class="modal-pane">
+    <div class="modal-title">GAME OVER</div>
+    <div id="restart" class="btn">RETRY</div>
+    <form id="points-submit-form" action="" method="post">
+      <input type="text" placeholder="Enter your nickname">
+      <input type="hidden">
+      <input type="submit">
+    </form>
+  </div>
+  <div class="modal-pane">
+    <div class="modal-title">
+      Leaderboard
+    </div>
+    <table id="leaderboard"></table>
+  </div>
 </div>
 
 <div id="timer"></div>
@@ -50,6 +63,9 @@
   var restartBtn = document.getElementById("restart");
   restartBtn.addEventListener('click', restart);
 
+  var pointsForm = document.getElementById("points-submit-form");
+  pointsForm.addEventListener('submit', submitPoints);
+
   function start() {
     var modal = document.getElementById('start-game');
     modal.classList.remove('show');
@@ -69,5 +85,43 @@
     gameView.start(canvasEl, backgroundCanvas);
   }
 
+  function submitPoints(e) {
+    e.preventDefault();
+    var nickname = e.currentTarget.elements[0].value;
+    $.ajax({
+      url: '/api/supersonic_paper_plane/new_point',
+      type: 'post',
+      dataType: 'json',
+      data: {
+        nickname: e.currentTarget.elements[0].value,
+        points: e.currentTarget.elements[1].value
+      },
+
+      success: function (respData) {
+        updateLeaderboard(respData);
+      }
+    });
+  }
+
+  function updateLeaderboard(data) {
+    var records = data.map(function (record) {
+      return "<tr><td>" + record.name + "</td>" + "<td>" + record.score + "</td></tr>";
+    }).join("");
+
+    $("#leaderboard").html(
+      "<tr><th>Nickname</th><th>Score</th></tr>" + records
+    );
+  }
+
+  function fetchLeaderboard() {
+    $.get(
+      "/api/supersonic_paper_plane/index",
+      function (respData) {
+        updateLeaderboard(respData);
+      }
+    );
+  }
+
+  fetchLeaderboard();
   // startGame();
 </script>

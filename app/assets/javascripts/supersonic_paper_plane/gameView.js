@@ -144,7 +144,6 @@
         cancelAnimationFrame(root.reqAFId);
         that.endGame(canvasEl);
         that.timer.stop();
-        debugger
       }
     };
     requestAnimationFrame(animate);
@@ -157,6 +156,7 @@
     var gameoverDiv = document.getElementById('gameover');
     gameoverDiv.classList.remove("hide");
     gameoverDiv.classList.add("show");
+    document.getElementById("points-submit-form").elements[1].value = this.game.points;
   };
 
 })(this);
