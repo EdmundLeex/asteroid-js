@@ -108,9 +108,7 @@
       return "<tr><td>" + record.name + "</td>" + "<td>" + record.score + "</td></tr>";
     }).join("");
 
-    $("#leaderboard").html(
-      "<tr><th>Nickname</th><th>Score</th></tr>" + records
-    );
+    $("#leaderboard").html(records);
   }
 
   function fetchLeaderboard() {

@@ -88,3 +88,27 @@ body {
 	padding: 3%;
 	color: 'red';
 }
+
+#leaderboard td {
+	min-width: 120px;
+	text-align: center;
+}
+
+#gameover {
+	min-height: 400px;
+}
+
+#gameover form {
+	left: 50%;
+	transform: translateX(-50%);
+	margin-top: 20px;
+	position: absolute;
+
+	input {
+		margin-top: 20px;
+		display: block;
+		position: relative;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
