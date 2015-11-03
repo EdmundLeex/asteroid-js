@@ -14,15 +14,17 @@
 
   var Game = SupersonicPaperPlane.Game = function (height, width) {
     this.isOver = false;
-    this.asteroids      = new LinkedList();
-    this.asteroidsInUse = new LinkedList();
-    this.bullets        = new LinkedList();
-    this.bulletsInUse   = new LinkedList();
-    this.boids          = new LinkedList();
-    this.boidsInUse     = new LinkedList();
-    this.weapons        = new LinkedList();
-    this.weaponsInUse   = new LinkedList();
-    this.ship           = new Ship({pos:[width/2, height/2], vel: [0,0]}, this);
+    this.asteroids       = new LinkedList();
+    this.asteroidsInUse  = new LinkedList();
+    this.bullets         = new LinkedList();
+    this.bulletsInUse    = new LinkedList();
+    this.boids           = new LinkedList();
+    this.boidsInUse      = new LinkedList();
+    this.weapons         = new LinkedList();
+    this.weaponsInUse    = new LinkedList();
+    this.explosions      = new LinkedList();
+    this.explosionsInUse = new LinkedList();
+    this.ship            = new Ship({pos:[width/2, height/2], vel: [0,0]}, this);
     this.comboTM = null;
     this.combo = 0;
     this.points = 0;
@@ -43,9 +45,10 @@
   Game.OFF_SCREEN_BUFFER = 200;
 
   Game.prototype.init = function () {
-    this.addSupersonicPaperPlane(Game.NUM_ASTEROIDS);
+    this.addAsteroids(Game.NUM_ASTEROIDS);
     this.addBullets(Game.NUM_BULLETS);
     this.addBoids(Game.NUM_BOIDS);
+    this.addExplosions(Game.NUM_ASTEROIDS);
 
     this.weapons.push(new Invincibility(this));
     this.weapons.push(new AllDirectionFire(this));
@@ -86,7 +89,7 @@
     }
   };
 
-  Game.prototype.addSupersonicPaperPlane = function (num) {
+  Game.prototype.addAsteroids = function (num) {
     var game = this;
     var attr = {
       pos: [0, 0],
@@ -97,6 +100,12 @@
       this.asteroids.push(
         new Asteroid(attr, game)
       );
+    }
+  };
+
+  Game.prototype.addExplosions = function (num) {
+    for (var i = 0; i < num; i++) {
+      this.explosions.push(new SupersonicPaperPlane.Explosion([0, 0]));
     }
   };
 
@@ -114,28 +123,33 @@
   };
 
   Game.prototype.draw = function (ctx, timer) {
-    ctx.clearRect(0,0,this.width, this.height);
+    var game = this;
+    ctx.clearRect(0, 0, game.width, game.height);
     ctx.fillStyle = "rgba(0,0,0,0)";
 
     // ctx.beginPath();
-    ctx.rect(0,0,this.width, this.height);
+    ctx.rect(0,0,game.width, game.height);
     ctx.fill();
 
-    this.ship.draw(ctx);
-    this.asteroidsInUse.each(function (ast) {
+    game.ship.draw(ctx);
+    game.asteroidsInUse.each(function (ast) {
       ast.draw(ctx);
     });
 
-    this.boidsInUse.each(function (boid) {
+    game.boidsInUse.each(function (boid) {
       boid.draw(ctx);
     });
 
-    this.bulletsInUse.each(function (bul) {
+    game.bulletsInUse.each(function (bul) {
       bul.draw(ctx);
     });
 
-    this.weaponsInUse.each(function (weapon) {
+    game.weaponsInUse.each(function (weapon) {
       weapon.draw(ctx);
+    });
+
+    game.explosionsInUse.each(function (exp) {
+      exp.draw(ctx, game.recycleExplosion.bind(game));
     });
 
     // timer.draw(ctx);
@@ -208,6 +222,11 @@
     this.boids.push(boid);
   };
 
+  Game.prototype.recycleExplosion = function (explosion) {
+    this.explosionsInUse.remove(explosion);
+    this.explosions.push(explosion);
+  };
+
   Game.prototype.checkCollisions = function() {
     var game = this;
     this.asteroidsInUse.each(function (ast) {
@@ -246,6 +265,7 @@
     this.bulletsInUse.each(function (bul) {
       game.asteroidsInUse.each(function (ast) {
         if (bul.isCollidedWith(ast)) {
+          game.explodeAt(ast.pos);
           game.recycleBullet(bul);
           game.recycleAsteroid(ast);
 
@@ -260,6 +280,7 @@
     this.bulletsInUse.each(function (bul) {
       game.boidsInUse.each(function (boid) {
         if (bul.isCollidedWith(boid)) {
+          game.explodeAt(boid.pos);
           game.recycleBullet(bul);
           game.recycleBoid(boid);
 
@@ -270,6 +291,12 @@
         }
       });
     });
+  };
+
+  Game.prototype.explodeAt = function (pos) {
+    var exp = this.explosions.pop();
+    exp.pos = pos;
+    this.explosionsInUse.push(exp);
   };
 
   Game.prototype.cancelCombo = function() {
