@@ -51,6 +51,24 @@
 	  }
   };
 
+  LinkedList.prototype.unshift = function (node) {
+    if (node.list) throw "Node is part of a list. Can't add it to another list.";
+
+    if (!this.length) {
+      this.first = node;
+      this.last = node;
+      node.prevNode = null;
+      node.nextNode = null;
+    } else {
+      node.nextNode = this.first;
+      this.first.prevNode = node;
+      this.first = node;
+    }
+
+    node.list = this;
+    this.length++;
+  }
+
   LinkedList.prototype.each = function (callback) {
   	if (this.first) {
   		var currentNode = this.first;

@@ -11,6 +11,7 @@
   var Invincibility = SupersonicPaperPlane.Invincibility;
   var AllDirectionFire = SupersonicPaperPlane.AllDirectionFire;
   var LinkedList = SupersonicPaperPlane.LinkedList;
+  var PopSound = SupersonicPaperPlane.PopSound;
 
   var Game = SupersonicPaperPlane.Game = function (height, width) {
     this.isOver = false;
@@ -24,6 +25,7 @@
     this.weaponsInUse    = new LinkedList();
     this.explosions      = new LinkedList();
     this.explosionsInUse = new LinkedList();
+    this.popSounds       = new Howl({urls:["audios/pop.wav"], sprite: {popping: [0, 2000]}});
     this.ship            = new Ship({pos:[width/2, height/2], vel: [0,0]}, this);
     this.comboTM = null;
     this.combo = 0;
@@ -37,8 +39,6 @@
     this.spawnEnemy();
   };
 
-  Game.prototype.popSound = new Audio("audios/pop.wav");
-
   Game.prototype.FormGroup = SupersonicPaperPlane.FormGroup;
 
   Game.NUM_ASTEROIDS = 1000;
@@ -50,7 +50,7 @@
     this.addAsteroids(Game.NUM_ASTEROIDS);
     this.addBullets(Game.NUM_BULLETS);
     this.addBoids(Game.NUM_BOIDS);
-    this.addExplosions(Game.NUM_ASTEROIDS);
+    this.addExplosions(Game.NUM_BULLETS * 2);
 
     this.weapons.push(new Invincibility(this));
     this.weapons.push(new AllDirectionFire(this));
@@ -239,6 +239,10 @@
           game.gameOver();
           game.ship.relocate();
         } else {
+          game.popSounds.play('popping');
+          // var popping = game.popSounds.pop();
+          // popping.play();
+          // game.popSounds.unshift(popping);
           if (game.comboTM) { clearTimeout(game.comboTM); }
           game.combo += 1;
           game.currentPoints += 6;
