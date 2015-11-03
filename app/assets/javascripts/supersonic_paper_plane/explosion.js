@@ -14,7 +14,7 @@
 
   Explosion.IMG_WIDTH = 128;
   Explosion.IMG_HEIGHT = 128;
-  Explosion.TICKS_PER = 2;
+  Explosion.TICKS_PER = 1;
 
   Explosion.prototype.image = new Image();
   Explosion.prototype.image.src = "images/explosion.png";
@@ -39,7 +39,7 @@
       Explosion.IMG_HEIGHT // destination height
     );
 
-    if (this.frameIndex >= 9) {
+    if (this.frameIndex >= 10) {
       this.frameIndex = 0;
       callback(this);
     }
