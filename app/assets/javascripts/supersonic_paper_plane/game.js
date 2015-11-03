@@ -83,7 +83,7 @@
       var bullet = new Bullet({
         pos: [0, 0],
         vel: [0, 0]
-      }, this.game);
+      }, this);
 
       this.bullets.push(bullet);
     }
@@ -229,7 +229,7 @@
 
   Game.prototype.checkCollisions = function() {
     var game = this;
-    this.asteroidsInUse.each(function (ast) {
+    game.asteroidsInUse.each(function (ast) {
       if (ast.isCollidedWith(game.ship)) {
         game.recycleAsteroid(ast);
 
@@ -245,7 +245,7 @@
       }
     });
 
-    this.boidsInUse.each(function (boid) {
+    game.boidsInUse.each(function (boid) {
       if (game.ship.isCollidedWith(boid)) {
         game.recycleBoid(boid);
         if (!game.ship.invincible) {
@@ -255,14 +255,14 @@
       }
     });
 
-    this.weaponsInUse.each(function (weapon) {
+    game.weaponsInUse.each(function (weapon) {
       if (game.ship.isCollidedWith(weapon)) {
         game.recycleWeapon(weapon);
         game.ship.mountWeapon(weapon);
       }
     });
 
-    this.bulletsInUse.each(function (bul) {
+    game.bulletsInUse.each(function (bul) {
       game.asteroidsInUse.each(function (ast) {
         if (bul.isCollidedWith(ast)) {
           game.explodeAt(ast.pos);
@@ -277,7 +277,7 @@
       });
     });
 
-    this.bulletsInUse.each(function (bul) {
+    game.bulletsInUse.each(function (bul) {
       game.boidsInUse.each(function (boid) {
         if (bul.isCollidedWith(boid)) {
           game.explodeAt(boid.pos);
