@@ -1,5 +1,16 @@
 ## TODOs
-- Link list object pooling
-- Better collision detection for ship
-- Graphic
-- Game over logic
+- Music
+- Start game design
+- Ranking datastructure
+- Combo animation
+- Better weapons design
+- Mobile compatability
+- Dynamic background
+- Graphic (spawn animation)
+- Irregular shape collision detection for ship
+- Gameover design
+- Starting scene
+- More wapons (bomb)
+- Combine boid and asteroid logic
+- Dry recyle* function
+- Add chasing (scared) enemy logic
