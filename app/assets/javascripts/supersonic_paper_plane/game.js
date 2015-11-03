@@ -37,6 +37,8 @@
     this.spawnEnemy();
   };
 
+  Game.prototype.popSound = new Audio("audios/pop.wav");
+
   Game.prototype.FormGroup = SupersonicPaperPlane.FormGroup;
 
   Game.NUM_ASTEROIDS = 1000;
