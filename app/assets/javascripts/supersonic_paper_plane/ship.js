@@ -9,6 +9,7 @@
 
   var Ship = SupersonicPaperPlane.Ship = function (attrs, game) {
     SupersonicPaperPlane.MovingObject.call(this, attrs, game);
+    this.shootSound = new Howl({urls: ["audios/shoot.wav"], sprite: {shooting: [0, 122]}});
     this.reset();
   };
 
@@ -112,6 +113,7 @@
   Ship.prototype.fireDefaultWeapon = function () {
     var bullet = this.game.bullets.pop();
     this.game.bulletsInUse.push(bullet);
+    this.shootSound.play("shooting");
     // console.log(this.game.bullets.length);
 
     // bullet vel calculate not right.

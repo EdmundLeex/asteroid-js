@@ -25,7 +25,9 @@
     this.weaponsInUse    = new LinkedList();
     this.explosions      = new LinkedList();
     this.explosionsInUse = new LinkedList();
-    this.popSounds       = new Howl({urls:["audios/pop.wav"], sprite: {popping: [0, 2000]}});
+    this.popSound        = new Howl({urls: ["audios/pop.wav"], sprite: {popping: [0, 128]}});
+    this.whistle         = new Howl({urls: ["audios/whistle.wav"], sprite: {whistle: [0, 214]}});
+    // this.gunDownSound    = new Howl({urls: ["audios/gun_down.wav"], sprite: {gunDown: [0, 980]}});
     this.ship            = new Ship({pos:[width/2, height/2], vel: [0,0]}, this);
     this.comboTM = null;
     this.combo = 0;
@@ -236,13 +238,12 @@
         game.recycleAsteroid(ast);
 
         if (!game.ship.invincible) {
+          game.whistle.play("whistle");
           game.gameOver();
           game.ship.relocate();
         } else {
-          game.popSounds.play('popping');
-          // var popping = game.popSounds.pop();
-          // popping.play();
-          // game.popSounds.unshift(popping);
+          game.popSound.play('popping');
+
           if (game.comboTM) { clearTimeout(game.comboTM); }
           game.combo += 1;
           game.currentPoints += 6;
@@ -255,6 +256,7 @@
       if (game.ship.isCollidedWith(boid)) {
         game.recycleBoid(boid);
         if (!game.ship.invincible) {
+          game.whistle.play("whistle");
           game.gameOver();
           game.ship.relocate();
         }
@@ -271,6 +273,8 @@
     game.bulletsInUse.each(function (bul) {
       game.asteroidsInUse.each(function (ast) {
         if (bul.isCollidedWith(ast)) {
+          game.popSound.play("popping");
+
           game.explodeAt(ast.pos);
           game.recycleBullet(bul);
           game.recycleAsteroid(ast);
@@ -286,6 +290,8 @@
     game.bulletsInUse.each(function (bul) {
       game.boidsInUse.each(function (boid) {
         if (bul.isCollidedWith(boid)) {
+          game.popSound.play("popping");
+
           game.explodeAt(boid.pos);
           game.recycleBullet(bul);
           game.recycleBoid(boid);
