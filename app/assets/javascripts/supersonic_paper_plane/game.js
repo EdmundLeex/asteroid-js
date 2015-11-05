@@ -37,16 +37,19 @@
     this.width = width;
     this.progression = 0;
     this.maxEnemyNum = 300;
+    this.maxBoids = 50;
     this.init();
     this.spawnEnemy();
   };
 
   Game.prototype.FormGroup = SupersonicPaperPlane.FormGroup;
 
-  Game.NUM_ASTEROIDS = 1000;
-  Game.NUM_BOIDS = 50;
+  Game.NUM_ASTEROIDS = 2000;
+  Game.NUM_BOIDS = 300;
   Game.NUM_BULLETS = 200;
   Game.OFF_SCREEN_BUFFER = 200;
+  Game.WAVE_DELTA = 600; // extra enemies every wave
+  Game.PROGRESS_GAP = 1500;
 
   Game.prototype.init = function () {
     this.addAsteroids(Game.NUM_ASTEROIDS);
@@ -62,6 +65,9 @@
     var game = this;
 
     game.points = 0;
+    game.progression = 0;
+    game.maxEnemyNum = 300;
+    game.maxBoids = 50;
 
     game.ship.reset();
 
@@ -202,14 +208,17 @@
   };
 
   Game.prototype.recycleBullet = function (bullet) {
+    // debugger
     // not reset pos
-    this.bulletsInUse.remove(bullet);
-    this.bullets.push(bullet);
+    if (bullet.list === this.bulletsInUse) {
+      this.bulletsInUse.remove(bullet);
+      this.bullets.push(bullet);
 
-    bullet.vel[0] = 0;
-    bullet.vel[1] = 0;
-    bullet.pos[0] = 0;
-    bullet.pos[1] = 0;
+      bullet.vel[0] = 0;
+      bullet.vel[1] = 0;
+    }
+    // bullet.pos[0] = 0;
+    // bullet.pos[1] = 0;
   };
 
   Game.prototype.recycleAsteroid = function (asteroid) {
@@ -347,13 +356,16 @@
   };
 
   Game.prototype.step = function() {
+    if (this.bulletsInUse.length + this.bullets.length !== 200) { debugger }
     this.moveObjects();
     this.checkCollisions();
 
-    if (this.progression === 0 || this.progression % 300 === 0) {
+    if (this.progression % 300 === 0) {
+      // console.log(this.progression);
       this.spawnEnemy();
-      if (this.progression % 4000 === 0) {
-        this.maxEnemyNum += 300;
+      if (this.progression % Game.PROGRESS_GAP === 0) {
+        this.maxEnemyNum += Game.WAVE_DELTA;
+        // console.log(this.maxEnemyNum);
       }
     }
     this.progression += 1;
@@ -370,6 +382,8 @@
     if (idx === 0 || idx === 1) {
       idx = 0;
     } else if (idx === 2 || idx === 3) {
+      // boids
+      this.maxBoids += 50;
       idx = 1;
     } else {
       idx = 2;

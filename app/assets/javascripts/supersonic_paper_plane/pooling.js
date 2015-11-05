@@ -24,8 +24,8 @@
   		node.prevNode = null;
   		node.nextNode = null;
   	} else {
-  		this.last.nextNode = node;
   		node.prevNode = this.last;
+      this.last.nextNode = node;
   		this.last = node;
   	}
 
@@ -36,10 +36,17 @@
   LinkedList.prototype.pop = function () {
   	if (this.length) {
 	  	var node = this.last;
-	  	var prevNode = node.prevNode;
+	  	var newLast = node.prevNode;
 
-	  	this.last = prevNode;
-	  	if (prevNode) prevNode.nextNode = null;
+	  	this.last = newLast;
+
+	  	if (newLast) {
+        newLast.nextNode = null;
+      } else {
+        // when there was only one node
+        this.first = null;
+      }
+
 	  	node.prevNode = null;
 	  	this.length--;
 
@@ -71,9 +78,10 @@
 
   LinkedList.prototype.each = function (callback) {
   	if (this.first) {
+      if (typeof this.first === 'undefined') debugger;
   		var currentNode = this.first;
 
-  		while (currentNode) {
+  		while (currentNode && typeof currentNode !== 'undefined') {
   			var nextNode = currentNode.nextNode
   			callback(currentNode);
   			currentNode = nextNode;
@@ -82,22 +90,28 @@
   };
 
   LinkedList.prototype.remove = function (node) {
-  	if (node.list !== this) throw "node doesn't belongs to list.";
+  	if (node.list !== this) {
+      // node.draw
+      debugger
+    }
     // draw a red dot on the screen
 
-  	var prevNode = node.prevNode;
-  	var nextNode = node.nextNode;
+  	var newPrev = node.prevNode;
+  	var newNext = node.nextNode;
 
-  	if (prevNode && nextNode) {
-  		prevNode.nextNode = nextNode;
-  		nextNode.prevNode = prevNode;
-  	} else if (prevNode && !nextNode) {
-  		prevNode.nextNode = nextNode;
-  		this.last = prevNode;
-  	} else if (!prevNode && nextNode) {
-  		nextNode.prevNode = null;
-  		this.first = nextNode;
-  	} else if (!prevNode && !nextNode) {
+  	if (newPrev && newNext) {
+  		newPrev.nextNode = newNext;
+  		newNext.prevNode = newPrev;
+  	} else if (newPrev && !newNext) {
+      // remove last node
+  		newPrev.nextNode = null;
+  		this.last = newPrev;
+  	} else if (!newPrev && newNext) {
+      // remove first node
+  		newNext.prevNode = null;
+  		this.first = newNext;
+  	} else if (!newPrev && !newNext) {
+      // remove the only node
   		this.first = null;
   		this.last = null;
   	} else {

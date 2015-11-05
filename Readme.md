@@ -1,10 +1,10 @@
 ## TODOs
+- Deply on Mobile, using PhoneGap
+- O(log n) Ranking data structure
 - Music
 - Start game design
-- Ranking datastructure
 - Combo animation
 - Better weapons design
-- Mobile compatability
 - Dynamic background
 - Graphic (spawn animation)
 - Irregular shape collision detection for ship
