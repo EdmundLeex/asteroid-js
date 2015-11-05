@@ -23,7 +23,7 @@
   Ship.HEIGHT = Ship.RADIUS + 15;
   Ship.WIDTH = Ship.HEIGHT / 2.5;
   Ship.FIRE_RATE = 150; // interval
-  Ship.RECOIL = Math.pow(1, 2) / 10;
+  Ship.RECOIL = Math.pow(1, 2) / 100;
 
   Ship.prototype.reset = function () {
     this.color = Ship.COLOR;
