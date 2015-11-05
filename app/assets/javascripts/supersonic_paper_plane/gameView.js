@@ -89,7 +89,7 @@
     var gameView = this,
         ship = this.game.ship,
         fireRate = this.game.ship.constructor.FIRE_RATE;
-    // if (!gameView.intervals.space) { ship.fireBullet(); }
+    if (!gameView.intervals.space) { ship.fireBullet(); }
     if (!gameView.intervals.space) {
       gameView.intervals.space = root.setInterval(ship.fireBullet.bind(ship), fireRate);
     }
