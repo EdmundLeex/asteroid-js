@@ -202,6 +202,7 @@
   };
 
   Game.prototype.recycleBullet = function (bullet) {
+    // not reset pos
     this.bulletsInUse.remove(bullet);
     this.bullets.push(bullet);
 

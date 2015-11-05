@@ -83,6 +83,7 @@
 
   LinkedList.prototype.remove = function (node) {
   	if (node.list !== this) throw "node doesn't belongs to list.";
+    // draw a red dot on the screen
 
   	var prevNode = node.prevNode;
   	var nextNode = node.nextNode;

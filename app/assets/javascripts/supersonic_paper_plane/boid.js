@@ -33,8 +33,8 @@
     ctx.beginPath();
     ctx.moveTo(this.pos[0] + Math.cos(this.heading + Math.PI / 2) * this.radius,
                this.pos[1] + Math.sin(this.heading + Math.PI / 2) * this.radius);
-    ctx.lineTo(this.pos[0] - Math.cos(this.heading + Math.PI) * pointLen,
-               this.pos[1] - Math.sin(this.heading + Math.PI) * pointLen);
+    // ctx.lineTo(this.pos[0] - Math.cos(this.heading + Math.PI) * pointLen,
+    //            this.pos[1] - Math.sin(this.heading + Math.PI) * pointLen);
     ctx.lineTo(this.pos[0] + Math.cos(this.heading - Math.PI / 2) * this.radius,
                this.pos[1] + Math.sin(this.heading - Math.PI / 2) * this.radius);
     ctx.fill();
