@@ -114,7 +114,7 @@
     var bullet = this.game.bullets.pop();
     // debugger
     this.game.bulletsInUse.push(bullet);
-    console.log(bullet);
+    // console.log(bullet);
     this.shootSound.play("shooting");
     // console.log(this.game.bullets.length);
 

@@ -50,7 +50,7 @@
         default:
           break;
       }
-    })
+    });
 
     root.addEventListener('keyup', function (e) {
       switch(e.keyCode){
@@ -82,7 +82,7 @@
         default:
           break;
       }
-    })
+    });
   };
 
   GameView.prototype.setBulletTimer = function () {
@@ -93,7 +93,7 @@
     if (!gameView.intervals.space) {
       gameView.intervals.space = root.setInterval(ship.fireBullet.bind(ship), fireRate);
     }
-  }
+  };
 
   GameView.prototype.setTurnTimer = function (dir) {
     var gameView = this,
@@ -102,7 +102,7 @@
     if (!gameView.intervals[dir]) {
       gameView.intervals[dir] = root.setInterval(ship.rotate.bind(ship, dir), 1000 / GameView.FPS);
     }
-  }
+  };
 
   GameView.prototype.setPowerTimer = function () {
     var gameView = this,
@@ -111,7 +111,7 @@
       gameView.intervals.up = gameView.intervals.up ||
         root.setInterval(ship.power.bind(ship), 1000 / GameView.FPS);
     // }
-  }
+  };
 
   GameView.prototype.setBrakeTimer = function () {
     var gameView = this,
@@ -120,7 +120,7 @@
     if (!gameView.intervals.down) {
       gameView.intervals.down = root.setInterval(ship.brake.bind(ship), 1000 / GameView.FPS);
     }
-  }
+  };
 
   GameView.prototype.start = function (canvasEl, bgCanvas) {
     var ctx = canvasEl.getContext("2d");
@@ -146,7 +146,7 @@
         that.endGame(canvasEl);
         that.timer.stop();
       }
-    };
+    }
     requestAnimationFrame(animate);
   };
 

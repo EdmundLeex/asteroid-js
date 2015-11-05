@@ -74,15 +74,14 @@
 
     node.list = this;
     this.length++;
-  }
+  };
 
   LinkedList.prototype.each = function (callback) {
   	if (this.first) {
-      if (typeof this.first === 'undefined') debugger;
   		var currentNode = this.first;
 
   		while (currentNode && typeof currentNode !== 'undefined') {
-  			var nextNode = currentNode.nextNode
+  			var nextNode = currentNode.nextNode;
   			callback(currentNode);
   			currentNode = nextNode;
   		}
@@ -91,8 +90,8 @@
 
   LinkedList.prototype.remove = function (node) {
   	if (node.list !== this) {
-      // node.draw
-      debugger
+      throw "node does not belong to list.";
+      // debugger
     }
     // draw a red dot on the screen
 
@@ -115,7 +114,8 @@
   		this.first = null;
   		this.last = null;
   	} else {
-  		debugger;
+      throw "node error";
+  		// debugger;
   	}
 
   	// detach node

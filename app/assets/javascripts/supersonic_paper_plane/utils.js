@@ -46,5 +46,5 @@
       pos = SupersonicPaperPlane.Util.randomPos(game, 0);
     }
     return pos;
-  }
+  };
 })(this);

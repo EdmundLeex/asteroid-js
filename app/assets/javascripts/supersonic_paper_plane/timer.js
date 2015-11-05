@@ -6,12 +6,12 @@
   var Timer = SupersonicPaperPlane.Timer = function () {
     this.startTime = null;
     this.endTime = null;
-  }
+  };
 
   Timer.prototype = {
     start: function () {
       this.endTime = null;
-      return this.startTime = (new Date()).getTime();
+      this.startTime = (new Date()).getTime();
     },
 
     timeElapsed: function () {
@@ -30,7 +30,7 @@
     },
 
     stop: function () {
-      return this.endTime = (new Date()).getTime();
+      this.endTime = (new Date()).getTime();
     },
 
     draw: function(ctx, time) {
@@ -46,6 +46,6 @@
       ctx.textAlign = "start";
       ctx.fillText(this.timeElapsedInMMSS(), 20, 10);
     }
-  }
+  };
 })(this);
 

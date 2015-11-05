@@ -61,7 +61,7 @@
       if (that !== boid && that.distance(boid, w, h) < that.vision) {
         neighbors.push(boid);
       }
-    })
+    });
     // for (var i = 0; i < game.boidsInUse.length; i++) {
     //   var boid = game.boidsInUse[i];
     //   if (this !== boid && this.distance(boid, w, h) < this.vision) {

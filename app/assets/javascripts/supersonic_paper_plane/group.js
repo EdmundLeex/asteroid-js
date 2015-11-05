@@ -128,7 +128,7 @@
 		var spawnBoids = function () {
 			var boid;
 			var numBoids = (game.boids.length < game.maxBoids) ? game.boids.length : game.maxBoids;
-			console.log(numBoids);
+			// console.log(numBoids);
 			if (game.boids.length === SupersonicPaperPlane.Game.NUM_BOIDS) {
 				for (var i = 0; i < numBoids; i++) {
 					boid = game.boids.pop();

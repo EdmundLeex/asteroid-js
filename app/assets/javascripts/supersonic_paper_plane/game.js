@@ -356,7 +356,6 @@
   };
 
   Game.prototype.step = function() {
-    if (this.bulletsInUse.length + this.bullets.length !== 200) { debugger }
     this.moveObjects();
     this.checkCollisions();
 
