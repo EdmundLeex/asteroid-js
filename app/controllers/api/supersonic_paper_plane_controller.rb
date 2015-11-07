@@ -13,7 +13,7 @@ class Api::SupersonicPaperPlaneController < ApplicationController
 	end
 
 	def index
-		@records = SupersonicPaperPlane.all.order('score DESC')
+		@records = SupersonicPaperPlane.all.order('score DESC').first(20)
 		render json: @records
 	end
 end

@@ -11,6 +11,7 @@
     this.gameBackground = new SupersonicPaperPlane.GameBackground(bgHeight, bgWidth);
     this.timer = new Timer();
     this.intervals = {};
+    this.backgroundMusic = new Howl({urls: ["audios/bg_music.mp3"], sprite: {bg: [0, 118000]}});
   };
 
   var Timer = SupersonicPaperPlane.Timer;
@@ -135,6 +136,8 @@
     that.game.isOver = false;
     that.game.reset();
 
+    that.backgroundMusic.play('bg');
+
     function animate () {
       that.game.draw(ctx, that.timer);
       that.game.step();
@@ -154,6 +157,7 @@
     var date = new Date();
     var time = date.getTime();
 
+    this.backgroundMusic.stop();
     var gameoverDiv = document.getElementById('gameover');
     gameoverDiv.classList.remove("hide");
     gameoverDiv.classList.add("show");

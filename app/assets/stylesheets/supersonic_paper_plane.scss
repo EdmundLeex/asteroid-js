@@ -37,6 +37,13 @@ body {
 	box-shadow: 3px 3px 3px black;
 }
 
+.title-img {
+	img {
+		max-width: 800px;
+		min-width: 200px;
+	}
+}
+
 .show {
 	z-index: 100;
 	opacity: 1;
@@ -65,11 +72,12 @@ body {
 	padding: 2%;
 	margin-left: 30%;
 	margin-right: 30%;
+	margin-bottom: 20px;
 	font-size: large;
 	font-weight: 800;
 	border: 1px solid lightgreen;
-	border-radius: 5%;
-	background-color: white;
+	border-radius: 5px;
+	background-color: #FAFAFA;
 	color: black;
 	box-shadow: 5px 5px;
 }

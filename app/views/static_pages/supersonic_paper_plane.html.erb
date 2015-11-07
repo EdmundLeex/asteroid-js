@@ -1,8 +1,19 @@
 <% @title = "Supersonic Paper Plane" %>
 
 <div id="start-game" class="modal show">
-  <div class="modal-title">WELCOME</div>
+  <div class="title-img"><%= image_tag("title.png") %></div>
   <div id="start" class="btn">START</div>
+  <div id="how-to-play" class="btn">HOW TO PLAY</div>
+  <div id="leaderboard-btn" class="btn">LEADER BOARD</div>
+</div>
+
+<div id="instructions" class="modal hide">
+  <ul>
+    <li>Arrow keys to move, Space key to shoot.</li>
+    <li>The only good red dot is a dead one.</li>
+    <li>These are weapons. Use them to express yourself.</li>
+    <li>Kill dots back-to-back to multiply your score.</li>
+  </ul>
 </div>
 
 <div id="gameover" class="modal hide">
@@ -26,8 +37,6 @@
 <div id="timer"></div>
 <canvas id="game-background"></canvas>
 <canvas id="game-canvas"></canvas>
-
-
 
 <%= javascript_include_tag "supersonic_paper_plane/group.js" %>
 <%= javascript_include_tag "supersonic_paper_plane/utils.js" %>
@@ -66,6 +75,9 @@
   var startBtn = document.getElementById('start');
   startBtn.addEventListener('click', start);
 
+  var howToPlayBtn = document.getElementById("how-to-play");
+  howToPlayBtn.addEventListener('click', showGuide);
+
   var restartBtn = document.getElementById("restart");
   restartBtn.addEventListener('click', restart);
 
@@ -77,6 +89,16 @@
     modal.classList.remove('show');
     modal.classList.add('hide');
     startGame();
+  }
+
+  function showGuide() {
+    var modal = document.getElementById("start-game");
+    modal.classList.remove('show');
+    modal.classList.add('hide');
+
+    modal = document.getElementById("instructions");
+    modal.classList.remove('hide');
+    modal.classList.add('show');
   }
 
   function restart() {
