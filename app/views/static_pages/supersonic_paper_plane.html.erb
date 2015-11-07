@@ -30,6 +30,14 @@
   <div id="back-btn" class="btn">BACK</div>
 </div>
 
+<div id="leaderboard" class="modal hide">
+  <div class="modal-title">
+    Leaderboard
+  </div>
+  <table id="leaderboard-table"></table>
+  <div id="back-btn2" class="btn">BACK</div>
+</div>
+
 <div id="gameover" class="modal hide">
   <div class="modal-pane">
     <div class="modal-title">GAME OVER</div>
@@ -44,7 +52,7 @@
     <div class="modal-title">
       Leaderboard
     </div>
-    <table id="leaderboard"></table>
+    <table id="leaderboard-table"></table>
   </div>
 </div>
 
@@ -91,8 +99,14 @@
   var howToPlayBtn = document.getElementById("how-to-play");
   howToPlayBtn.addEventListener('click', showGuide);
 
+  var leaderboardBtn = document.getElementById("leaderboard-btn");
+  leaderboardBtn.addEventListener('click', showLeaderboard);
+
   var backBtn = document.getElementById('back-btn');
   backBtn.addEventListener('click', goBack);
+
+  var backBtn2 = document.getElementById('back-btn2');
+  backBtn2.addEventListener('click', goBack);
 
   var restartBtn = document.getElementById("restart");
   restartBtn.addEventListener('click', restart);
@@ -107,12 +121,12 @@
     startGame();
   }
 
-  function goBack() {
-    var modal = document.getElementById("instructions");
-    modal.classList.remove('show');
-    modal.classList.add('hide');
+  function goBack(e) {
+    // var modal = document.getElementById("instructions");
+    e.currentTarget.parentElement.classList.remove('show');
+    e.currentTarget.parentElement.classList.add('hide');
 
-    modal = document.getElementById("start-game");
+    var modal = document.getElementById("start-game");
     modal.classList.remove('hide');
     modal.classList.add('show');
   }
@@ -123,6 +137,16 @@
     modal.classList.add('hide');
 
     modal = document.getElementById("instructions");
+    modal.classList.remove('hide');
+    modal.classList.add('show');
+  }
+
+  function showLeaderboard() {
+    var modal = document.getElementById("start-game");
+    modal.classList.remove('show');
+    modal.classList.add('hide');
+
+    modal = document.getElementById("leaderboard");
     modal.classList.remove('hide');
     modal.classList.add('show');
   }
@@ -162,7 +186,7 @@
       return "<tr><td>" + record.name + "</td>" + "<td>" + record.score + "</td></tr>";
     }).join("");
 
-    $("#leaderboard").html(records);
+    $("#leaderboard-table").html(records);
   }
 
   function fetchLeaderboard() {

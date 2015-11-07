@@ -119,9 +119,17 @@ body {
 	}
 }
 
-#leaderboard td {
-	min-width: 120px;
-	text-align: center;
+#leaderboard {
+	min-width: 380px;
+	min-height: 300px;
+}
+
+#leaderboard-table {
+	margin: 0 auto;
+	td {
+		min-width: 120px;
+		text-align: center;
+	}
 }
 
 #gameover {
