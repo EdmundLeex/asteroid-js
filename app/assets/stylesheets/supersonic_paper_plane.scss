@@ -89,12 +89,34 @@ body {
 	box-shadow: none;
 }
 
-#timer {
-	position: absolute;
-	top: 0;
-	right: 0;
-	padding: 3%;
-	color: 'red';
+#instructions {
+	min-width: 380px;
+	min-height: 300px;
+
+	h2 {
+		text-align: center;
+		width: 100%;
+	}
+
+	ul {
+		list-style: none;
+		padding-left: 40px;
+		padding-right: 40px;
+
+		li {
+			vertical-align: middle;
+		}
+
+		img {
+			width: 40px;
+			height: 40px;
+		}
+
+		span {
+			padding-left: 10px;
+			vertical-align: 60%;
+		}
+	}
 }
 
 #leaderboard td {

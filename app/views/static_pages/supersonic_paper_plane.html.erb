@@ -8,12 +8,26 @@
 </div>
 
 <div id="instructions" class="modal hide">
+  <h2>HOW TO PLAY</h2>
   <ul>
-    <li>Arrow keys to move, Space key to shoot.</li>
-    <li>The only good red dot is a dead one.</li>
-    <li>These are weapons. Use them to express yourself.</li>
-    <li>Kill dots back-to-back to multiply your score.</li>
+    <li>
+      <%= image_tag("plane.png") %>
+      <span>This is you. [ARROW KEYS] to move, [SPACE] key to shoot.</span>
+    </li>
+    <li>
+      <%= image_tag("red_dot.png") %>
+      <span>The only good red dot is a dead one.</span>
+    </li>
+    <li>
+      <%= image_tag("weapon.png") %>
+      <span>These are weapons. Use them to express yourself.</span>
+    </li>
+    <li>
+      <%= image_tag("combo.png") %>
+      <span>Kill dots back-to-back to multiply your score.</span>
+    </li>
   </ul>
+  <div id="back-btn" class="btn">BACK</div>
 </div>
 
 <div id="gameover" class="modal hide">
@@ -34,7 +48,6 @@
   </div>
 </div>
 
-<div id="timer"></div>
 <canvas id="game-background"></canvas>
 <canvas id="game-canvas"></canvas>
 
@@ -78,6 +91,9 @@
   var howToPlayBtn = document.getElementById("how-to-play");
   howToPlayBtn.addEventListener('click', showGuide);
 
+  var backBtn = document.getElementById('back-btn');
+  backBtn.addEventListener('click', goBack);
+
   var restartBtn = document.getElementById("restart");
   restartBtn.addEventListener('click', restart);
 
@@ -89,6 +105,16 @@
     modal.classList.remove('show');
     modal.classList.add('hide');
     startGame();
+  }
+
+  function goBack() {
+    var modal = document.getElementById("instructions");
+    modal.classList.remove('show');
+    modal.classList.add('hide');
+
+    modal = document.getElementById("start-game");
+    modal.classList.remove('hide');
+    modal.classList.add('show');
   }
 
   function showGuide() {
