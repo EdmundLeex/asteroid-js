@@ -3,31 +3,29 @@
 <div id="start-game" class="modal show">
   <div class="title-img"><%= image_tag("title.png") %></div>
   <div id="start" class="btn">START</div>
-  <div id="how-to-play" class="btn">HOW TO PLAY</div>
   <div id="leaderboard-btn" class="btn">LEADER BOARD</div>
-</div>
 
-<div id="instructions" class="modal hide">
-  <h2>HOW TO PLAY</h2>
-  <ul>
-    <li>
-      <%= image_tag("plane.png") %>
-      <span>This is you. [ARROW KEYS] to move, [SPACE] key to shoot.</span>
-    </li>
-    <li>
-      <%= image_tag("red_dot.png") %>
-      <span>The only good red dot is a dead one.</span>
-    </li>
-    <li>
-      <%= image_tag("weapon.png") %>
-      <span>These are weapons. Use them to express yourself.</span>
-    </li>
-    <li>
-      <%= image_tag("combo.png") %>
-      <span>Kill dots back-to-back to multiply your score.</span>
-    </li>
-  </ul>
-  <div id="back-btn" class="btn">BACK</div>
+  <div id="instructions" >
+    <h2>HOW TO PLAY</h2>
+    <ul>
+      <li>
+        <%= image_tag("plane.png") %>
+        <span>This is you. [ARROW KEYS] to move, [SPACE] key to shoot.</span>
+      </li>
+      <li>
+        <%= image_tag("red_dot.png") %>
+        <span>The only good red dot is a dead one.</span>
+      </li>
+      <li>
+        <%= image_tag("weapon.png") %>
+        <span>These are weapons. Use them to express yourself.</span>
+      </li>
+      <li>
+        <%= image_tag("combo.png") %>
+        <span>Kill dots back-to-back to multiply your score.</span>
+      </li>
+    </ul>
+  </div>
 </div>
 
 <div id="leaderboard" class="modal hide">
@@ -35,7 +33,7 @@
     Leaderboard
   </div>
   <table id="leaderboard-table"></table>
-  <div id="back-btn2" class="btn">BACK</div>
+  <div id="back-btn" class="btn">BACK</div>
 </div>
 
 <div id="gameover" class="modal hide">
@@ -96,17 +94,14 @@
   var startBtn = document.getElementById('start');
   startBtn.addEventListener('click', start);
 
-  var howToPlayBtn = document.getElementById("how-to-play");
-  howToPlayBtn.addEventListener('click', showGuide);
+  // var howToPlayBtn = document.getElementById("how-to-play");
+  // howToPlayBtn.addEventListener('click', showGuide);
 
   var leaderboardBtn = document.getElementById("leaderboard-btn");
   leaderboardBtn.addEventListener('click', showLeaderboard);
 
   var backBtn = document.getElementById('back-btn');
   backBtn.addEventListener('click', goBack);
-
-  var backBtn2 = document.getElementById('back-btn2');
-  backBtn2.addEventListener('click', goBack);
 
   var restartBtn = document.getElementById("restart");
   restartBtn.addEventListener('click', restart);

@@ -99,9 +99,11 @@ body {
 	}
 
 	ul {
+		position: relative;
+		float: left;
 		list-style: none;
-		padding-left: 40px;
-		padding-right: 40px;
+		left: 50%;
+		transform: translateX(-50%);
 
 		li {
 			vertical-align: middle;
