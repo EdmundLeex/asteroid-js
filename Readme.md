@@ -27,7 +27,7 @@ second, which provides a smooth game experience to players.
 
 <b>Cons:</b>
 
-requestAnimationFrame on Chrome has this [!raf_issue]issue where is generates
+requestAnimationFrame on Chrome has this [issue][raf_issue] where is generates
 unique request id for each frame, which leads to garbage collection
 and unstable memory usage.
 
@@ -124,5 +124,5 @@ Frontend is built using jQuery, HTML, CSS.
 - Add chasing (scared) enemy logic
 
 ##Credits
-Background music is provided by my dear friend David Porter[!dporter].
+Background music is provided by my dear friend [David Porter][dporter].
 [dporter]: http://www.porterdavid.com
