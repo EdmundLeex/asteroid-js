@@ -11,11 +11,11 @@ high score.
 
 Beaware, this game is fun and very adictive!
 
-[screenshot_1]
-[screenshot_2]
+![screenshot_1]
+![screenshot_2]
 
-[!screenshot_1]: ./docs/supersonic_paper_plane_1
-[!screenshot_2]: ./docs/supersonic_paper_plane_2
+[screenshot_1]: ./docs/supersonic_1.png
+[screenshot_2]: ./docs/supersonic_2.png
 
 ## Technology
 Technology used
