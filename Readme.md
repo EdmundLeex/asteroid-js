@@ -2,7 +2,9 @@
 A full stack js game, built with Ruby on Rails and JavaScript.
 
 ## How to Play
-games.edmundleex.us
+[games.edmundleex.us][game]
+
+[game]: http://games.edmundleex.us
 
 Go to this link, kill the red dots, and stay alive! Submit your
 high score.
@@ -125,4 +127,5 @@ Frontend is built using jQuery, HTML, CSS.
 
 ##Credits
 Background music is provided by my dear friend [David Porter][dporter].
+
 [dporter]: http://www.porterdavid.com
