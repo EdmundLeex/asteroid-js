@@ -9,7 +9,13 @@ A full stack js game, built with Ruby on Rails and JavaScript.
 Go to this link, kill the red dots, and stay alive! Submit your
 high score.
 
-Beaware, this game is fun and adictive!
+Beaware, this game is fun and very adictive!
+
+[screenshot_1]
+[screenshot_2]
+
+[!screenshot_1]: ./docs/supersonic_paper_plane_1
+[!screenshot_2]: ./docs/supersonic_paper_plane_2
 
 ## Technology
 Technology used
