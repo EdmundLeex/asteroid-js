@@ -107,7 +107,8 @@
 
 		var randomSpawn = function () {
 			var asteroid;
-			for (var i = 0; i < MAX_SIZE / 2; i++) {
+			var nums = (MAX_SIZE < game.maxEnemyNum) ? MAX_SIZE : game.maxEnemyNum;
+			for (var i = 0; i < nums / 2; i++) {
 				asteroid = game.asteroids.pop();
 				// asteroid.pos = _randomPos(game, 0);
 				asteroid.pos = _offScreen(game, 0);
@@ -116,21 +117,21 @@
 			}
 		};
 
-		var scared = function () {
-			var asteroid;
-			for (var i = 0; i < MAX_SIZE; i++) {
-				asteroid = game.asteroids.pop();
+		// var scared = function () {
+		// 	var asteroid;
+		// 	for (var i = 0; i < MAX_SIZE; i++) {
+		// 		asteroid = game.asteroids.pop();
 
-				asteroid.pos = SupersonicPaperPlane.Util.ensureDistanceFromShip(game);
-			}
-		};
+		// 		asteroid.pos = SupersonicPaperPlane.Util.ensureDistanceFromShip(game);
+		// 	}
+		// };
 
 		var spawnBoids = function () {
 			var boid;
-			var numBoids = (game.boids.length < game.maxBoids) ? game.boids.length : game.maxBoids;
+			// var numBoids = (game.boids.length < game.maxBoids) ? game.boids.length : game.maxBoids;
 			// console.log(numBoids);
 			if (game.boids.length === SupersonicPaperPlane.Game.NUM_BOIDS) {
-				for (var i = 0; i < numBoids; i++) {
+				for (var i = 0; i < game.maxBoids; i++) {
 					boid = game.boids.pop();
 
 					boid.pos = _offScreen(game, 0);
@@ -140,7 +141,7 @@
 		};
 
 		var forms = function () {
-			return ["random", "boids", "regtangle"];
+			return ["random", "regtangle", "boids"];
 		};
 
 		switch (form) {

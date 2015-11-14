@@ -37,7 +37,7 @@
     this.width = width;
     this.progression = 0;
     this.maxEnemyNum = 300;
-    this.maxBoids = 50;
+    this.maxBoids = 0;
     this.init();
     this.spawnEnemy();
   };
@@ -48,8 +48,8 @@
   Game.NUM_BOIDS = 300;
   Game.NUM_BULLETS = 200;
   Game.OFF_SCREEN_BUFFER = 200;
-  Game.WAVE_DELTA = 600; // extra enemies every wave
-  Game.PROGRESS_GAP = 1500;
+  Game.WAVE_DELTA = 50; // extra enemies every wave
+  Game.PROGRESS_INTERVAL = 1500;
 
   Game.prototype.init = function () {
     this.addAsteroids(Game.NUM_ASTEROIDS);
@@ -67,7 +67,7 @@
     game.points = 0;
     game.progression = 0;
     game.maxEnemyNum = 300;
-    game.maxBoids = 50;
+    game.maxBoids = 0;
 
     game.ship.reset();
 
@@ -336,11 +336,46 @@
   };
 
   Game.prototype.spawnEnemy = function () {
-    // while (this.asteroidsInUse.length < this.asteroids.length) {
-    if (this.asteroidsInUse.length < this.maxEnemyNum) {
-      this.spawnGroup();
+    var forms = this.FormGroup('forms');
+    var idx = this.adjustProgression();
+
+    if (idx === null) {
+      idx = Math.floor(Math.random() * 10);
+
+      if (idx < 2) {
+        idx = 0;
+      } else if (idx < 8) {
+        idx = 1;
+      } else {
+        // boids
+        if (this.maxBoids < Game.NUM_BOIDS) this.maxBoids += 25;
+        idx = 2;
+      }
     }
-    // }
+    // debugger
+    var form = forms[idx];
+
+    if (this.asteroidsInUse.length < this.maxEnemyNum) {
+      this.spawnGroup(form);
+    }
+  };
+
+  Game.prototype.adjustProgression = function () {
+    var idx = null;
+    if (this.progression < 300) {
+      idx = 0;
+      this.maxEnemyNum = 5;
+    } else if (this.progression < 600) {
+      idx = 0;
+      this.maxEnemyNum = 20;
+    } else if (this.progression < 900) {
+      idx = 1;
+      this.maxEnemyNum = 100;
+    } else if (this.progression < 1200) {
+      idx = 1;
+      this.maxEnemyNum = 200;
+    }
+    return idx;
   };
 
   Game.prototype.spawnWeapon = function () {
@@ -369,33 +404,22 @@
     if (this.progression % 300 === 0) {
       // console.log(this.progression);
       this.spawnEnemy();
-      if (this.progression % Game.PROGRESS_GAP === 0) {
+      if (this.progression % Game.PROGRESS_INTERVAL === 0) {
         this.maxEnemyNum += Game.WAVE_DELTA;
         // console.log(this.maxEnemyNum);
       }
     }
     this.progression += 1;
 
-    var odd = Math.floor(Math.random() * 500);
+    var odd = Math.floor(Math.random() * 300);
     if (odd === 1) { this.spawnWeapon(); }
+    if (this.progression < 300) this.spawnWeapon();
 
     if (this.asteroids.length + this.asteroidsInUse.length !== Game.NUM_ASTEROIDS) {console.log('something wrong');}
   };
 
-  Game.prototype.spawnGroup = function () {
-    var forms = this.FormGroup('forms');
-    var idx = Math.floor(Math.random() * 10);
-    if (idx === 0 || idx === 1) {
-      idx = 0;
-    } else if (idx === 2 || idx === 3) {
-      // boids
-      this.maxBoids += 50;
-      idx = 1;
-    } else {
-      idx = 2;
-    }
-    var form = forms[idx];
-    this.FormGroup(form);
+  Game.prototype.spawnGroup = function (group) {
+    this.FormGroup(group);
   };
 
 })(this);
