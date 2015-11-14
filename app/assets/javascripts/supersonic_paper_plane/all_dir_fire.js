@@ -7,6 +7,7 @@
 
   var AllDirectionFire = SupersonicPaperPlane.AllDirectionFire = function (game) {
     SupersonicPaperPlane.Weaponary.call(this, game);
+    this.shootSound = new Howl({urls: ["audios/shoot.wav"], sprite: {shooting: [0, 122]}});
     this.color2 = "#0068ff";
   };
 
@@ -22,6 +23,7 @@
       this.game.bulletsInUse.push(bullet);
     }
     // console.log(this.game.bullets.length);
+    this.shootSound.play("shooting");
 
     bulletLoad.forEach(function (bul, idx) {
       bul.pos = [this.pos[0] + Math.sin(this.theta) * SupersonicPaperPlane.Ship.HEIGHT,
