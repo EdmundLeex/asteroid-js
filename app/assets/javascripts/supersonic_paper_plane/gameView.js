@@ -11,7 +11,7 @@
     this.gameBackground = new SupersonicPaperPlane.GameBackground(bgHeight, bgWidth);
     this.timer = new Timer();
     this.intervals = {};
-    this.backgroundMusic = new Howl({urls: ["audios/bg_music.mp3"], sprite: {bg: [0, 118000]}});
+    this.backgroundMusic = new Howl({urls: ["audios/bg_music.mp3"], sprite: {bg: [0, 118000]}, loop: true});
   };
 
   var Timer = SupersonicPaperPlane.Timer;
