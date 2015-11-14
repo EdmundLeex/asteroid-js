@@ -269,6 +269,13 @@
           game.whistle.play("whistle");
           game.gameOver();
           game.ship.relocate();
+        } else {
+          game.popSound.play('popping');
+
+          if (game.comboTM) { clearTimeout(game.comboTM); }
+          game.combo += 1;
+          game.currentPoints += 6;
+          game.comboTM = setTimeout(game.cancelCombo.bind(game), 2000);
         }
       }
     });
