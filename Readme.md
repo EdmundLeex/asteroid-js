@@ -1,5 +1,5 @@
 # Supersonic Paper Plane
-A full stack js game, built with Ruby on Rails and JavaScript.
+A full stack JavaScript game, built with Ruby on Rails and JavaScript.
 
 ## How to Play
 [games.edmundleex.us][game]
@@ -9,7 +9,7 @@ A full stack js game, built with Ruby on Rails and JavaScript.
 Go to this link, kill the red dots, and stay alive! Submit your
 high score.
 
-Beaware, this game is fun and very adictive!
+Beware, this game is fun and very addictive!
 
 ![screenshot_1]
 ![screenshot_2]
@@ -52,7 +52,7 @@ of when and where it happens, I aimed at zero garbage collection.
 This keeps frame rate stable at about 60 FPS, and prevent GC process
 from slowing frame rendering down.
 
-A W-Linked List datastructure is used to handle object pooling.
+A W-Linked List data structure is used to handle object pooling.
 This yields stable memory usage and zero garbage collection.
 
 <b>Pros:</b>
@@ -69,7 +69,7 @@ Currently, when there are over 1500 objects on the scene, the game cannot
 maintain 60 FPS.
 
 <b>Possible Solution:</b>
-Since the ordered structure provided by linked list is not neccessary
+Since the ordered structure provided by linked list is not necessary
 in object pooling implementation, I planned on changing this to use HashSet,
 which will use a contiguous memory addresses and provides faster traversal.
 
@@ -101,7 +101,7 @@ Currently, a simple RESTful backend on Rails is used to keep
 all the records.
 
 #### Ranking System
-An ambitious ranking system datastructure is under development. It aims to
+An ambitious ranking system data structure is under development. It aims to
 handle large number of records and yield accurate ranking.
 
 A N-nary tree structure will be implemented. This can provide O(log n) time
@@ -116,20 +116,18 @@ uses one thread for updating database.
 Frontend is built using jQuery, HTML, CSS.
 
 ## TODOs
-- Deply on Mobile, using PhoneGap
-- O(log n) Ranking data structure
-- Change object pooling implementation to HashSet
-- Combo animation
-- Better weapons design
-- Dynamic background
-- Graphic (spawn animation)
-- Irregular shape collision detection for ship
-- Gameover design
-- Starting scene
-- More wapons (bomb)
-- Combine boid and asteroid logic
-- Dry recyle* function
-- Add chasing (scared) enemy logic
+[ ] Deploy on Mobile, using PhoneGap
+[ ] O(log n) Ranking data structure implementation
+[ ] Change object pooling implementation to HashSet
+[ ] Combo animation
+[ ] Better weapons design
+[ ] Dynamic background
+[ ] Graphic (spawn animation)
+[ ] Irregular shape collision detection for ship
+[ ] More weapons (bomb)
+[ ] Combine boid and asteroid logic
+[ ] Dry recycle function
+[ ] Add chasing (scared) enemy logic
 
 ##Credits
 Background music is provided by my dear friend [David Porter][dporter].
