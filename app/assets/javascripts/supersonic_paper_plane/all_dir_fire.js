@@ -17,7 +17,7 @@
     var bulletLoad = [];
     var bullet;
 
-    for (var i = 0; i < 8; i++) {
+    for (var i = 0; i < 4; i++) {
       bullet = this.game.bullets.pop();
       bulletLoad.push(bullet);
       this.game.bulletsInUse.push(bullet);
@@ -28,8 +28,8 @@
     bulletLoad.forEach(function (bul, idx) {
       bul.pos = [this.pos[0] + Math.sin(this.theta) * SupersonicPaperPlane.Ship.HEIGHT,
                  this.pos[1] - Math.cos(this.theta) * SupersonicPaperPlane.Ship.HEIGHT];
-      bul.vel = [(SupersonicPaperPlane.Bullet.VELOCITY) * Math.cos(this.theta - SupersonicPaperPlane.Util.translateRadian(90 + (45 * idx))),
-                    (SupersonicPaperPlane.Bullet.VELOCITY) * Math.sin(this.theta - SupersonicPaperPlane.Util.translateRadian(90 + (45 * idx)))];
+      bul.vel = [(SupersonicPaperPlane.Bullet.VELOCITY) * Math.cos(this.theta - SupersonicPaperPlane.Util.translateRadian(90 * idx)),
+                    (SupersonicPaperPlane.Bullet.VELOCITY) * Math.sin(this.theta - SupersonicPaperPlane.Util.translateRadian(90 * idx))];
     }, this);
   };
 })(this);
