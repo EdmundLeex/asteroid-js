@@ -52,7 +52,7 @@ of when and where it happens, I aimed at zero garbage collection.
 This keeps frame rate stable at about 60 FPS, and prevent GC process
 from slowing frame rendering down.
 
-A W-Linked List data structure is used to handle object pooling.
+A Doubly-Linked List data structure is used to handle object pooling.
 This yields stable memory usage and zero garbage collection.
 
 <b>Pros:</b>
