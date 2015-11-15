@@ -8,10 +8,13 @@
   var AllDirectionFire = SupersonicPaperPlane.AllDirectionFire = function (game) {
     SupersonicPaperPlane.Weaponary.call(this, game);
     this.shootSound = new Howl({urls: ["audios/shoot.wav"], sprite: {shooting: [0, 122]}});
-    this.color2 = "#0068ff";
+    this.color2 = "#b10012";
   };
 
   SupersonicPaperPlane.Util.inherits(AllDirectionFire, SupersonicPaperPlane.Weaponary);
+
+  AllDirectionFire.prototype.image = new Image();
+  AllDirectionFire.prototype.image.src = "images/all_dir_fire.png";
 
   AllDirectionFire.prototype.fire = function () {
     var bulletLoad = [];

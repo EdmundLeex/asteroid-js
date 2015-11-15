@@ -140,7 +140,7 @@
     this.resetWeapon();
     this.weaponTimeLimitTM = setTimeout(this.resetWeapon.bind(this), 20000);
     this.weaponCountdownTM = setTimeout(this.weaponReminder.bind(this, weapon), 15000);
-    this.fireBullet = weapon.fire;
+    this.fireBullet = weapon.fire || this.fireDefaultWeapon;
     this.color = weapon.color2;
     if (weapon.constructor === SupersonicPaperPlane.Invincibility) {
       this.toggleInvincibility(true);

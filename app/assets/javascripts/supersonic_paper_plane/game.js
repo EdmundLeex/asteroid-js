@@ -386,7 +386,7 @@
       for (var i = 0; i < idx; i++) {
         weapon = weapon.nextNode;
       }
-
+      weapon.pos = SupersonicPaperPlane.Util.randomPos(this, 0);
       this.weapons.remove(weapon);
       this.weaponsInUse.push(weapon);
     }
