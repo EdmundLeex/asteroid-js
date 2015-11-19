@@ -104,6 +104,15 @@ all the records.
 An ambitious ranking system data structure is under development. It aims to
 handle large number of records and yield accurate ranking.
 
+##### Ranking Tree
+![ranking_tree]
+
+##### DB Schema Design
+![ranking_schema]
+
+[ranking_tree]: ./docs/ranking_tree.png
+[ranking_schema]: ./docs/ranking_schema.png
+
 A N-nary tree structure will be implemented. This can provide O(log n) time
 lookup, delete and update. And it also minimized the number of read/write to
 the database.
