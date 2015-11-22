@@ -76,7 +76,7 @@ which will use a contiguous memory addresses and provides faster traversal.
 #### Enemy Movement AI
 [Boids][boids_wiki] have their sights. Currently, the logic is having them flock
 with the same kind when they 'see' each other.
-![boid_behavior]
+![boids_behavior]
 
 [boids_behavior]: ./docs/boids_behavior.gif
 [boids_wiki]: https://en.wikipedia.org/wiki/Boids
