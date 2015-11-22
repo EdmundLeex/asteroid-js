@@ -74,10 +74,14 @@ in object pooling implementation, I planned on changing this to use HashSet,
 which will use a contiguous memory addresses and provides faster traversal.
 
 #### Enemy Movement AI
-Boid objects has their sights. Currently, the logic is having them flock
-with the same kind when they 'see' each other. Thanks to the prototypical
-inheritance implementation and modular design, this AI can be easily used on
-other fun logics, including:
+Boids have their sights. Currently, the logic is having them flock
+with the same kind when they 'see' each other.
+![boid_behavior]
+
+[boid_behavior]: ./docs/boid_behavior.gif
+
+Thanks to the prototypical inheritance implementation and modular design,
+this AI can be easily used on other fun logics, including:
 - Chasing Mode
 - Scaring Away Mode
 - Protecting Weapons from Picked up Mode
