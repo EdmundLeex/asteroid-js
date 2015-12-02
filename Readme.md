@@ -140,7 +140,7 @@ Frontend is built using jQuery, HTML, CSS.
 - [ ] More weapons (bomb)
 - [ ] Combine boid and asteroid logic
 - [ ] Dry recycle function
-- [ ] Add chasing (scared) enemy logic
+- [x] Add chasing (scared) enemy logic
 
 ##Credits
 Background music is provided by my dear friend [David Porter][dporter].
