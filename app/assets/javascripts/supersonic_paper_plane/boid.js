@@ -57,11 +57,15 @@
     var neighbors = [];
     var that = this;
 
-    game.boidsInUse.each(function (boid) {
-      if (that !== boid && that.distance(boid, w, h) < that.vision) {
-        neighbors.push(boid);
-      }
-    });
+    if (that.distance(game.ship, w, h) < that.vision) {
+      neighbors.push(game.ship);
+    } else {
+      game.boidsInUse.each(function (boid) {
+        if (that !== boid && that.distance(boid, w, h) < that.vision) {
+          neighbors.push(boid);
+        }
+      });
+    }
     // for (var i = 0; i < game.boidsInUse.length; i++) {
     //   var boid = game.boidsInUse[i];
     //   if (this !== boid && this.distance(boid, w, h) < this.vision) {
@@ -109,14 +113,21 @@
       var mindist = this.radius * 2, min = null;
       for (var i = 0; i < neighbors.length; i++) {
         var boid = neighbors[i];
-        meanhx += Math.cos(boid.heading);
-        meanhy += Math.sin(boid.heading);
-        meanx += boid.pos[0];
-        meany += boid.pos[1];
-        var dist = this.distance(boid, w, h);
-        if (dist < mindist) {
-          mindist = dist;
-          min = boid;
+        if (boid === this.game.ship) {
+          meanhx += boid.pos[0];
+          meanhy += boid.pos[1];
+          meanx += boid.pos[0];
+          meany += boid.pos[1];
+        } else {
+          meanhx += Math.cos(boid.heading);
+          meanhy += Math.sin(boid.heading);
+          meanx += boid.pos[0];
+          meany += boid.pos[1];
+          var dist = this.distance(boid, w, h);
+          if (dist < mindist) {
+            mindist = dist;
+            min = boid;
+          }
         }
       }
       meanhx /= neighbors.length;
