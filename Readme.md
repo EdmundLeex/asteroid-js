@@ -130,6 +130,7 @@ uses one thread for updating database.
 Frontend is built using jQuery, HTML, CSS.
 
 ## TODOs
+- [x] Add chasing (scared) enemy logic
 - [ ] Deploy on Mobile, using PhoneGap
 - [ ] O(log n) Ranking data structure implementation
 - [ ] Change object pooling implementation to HashSet
@@ -140,7 +141,6 @@ Frontend is built using jQuery, HTML, CSS.
 - [ ] More weapons (bomb)
 - [ ] Combine boid and asteroid logic
 - [ ] Dry recycle function
-- [x] Add chasing (scared) enemy logic
 
 ##Credits
 Background music is provided by my dear friend [David Porter][dporter].
