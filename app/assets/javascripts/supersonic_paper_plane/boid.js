@@ -141,16 +141,16 @@
       this.heading = Boid.wrap(this.heading + delta, -Math.PI, Math.PI);
     }
 
-    this.step(this.game);
+    this.step();
   };
 
   Boid.prototype.step = function() {
-      // var padding = game.padding;
-      var width = this.game.width, height = this.game.height;
-      this.pos[0] = Boid.wrap(this.pos[0] + Math.cos(this.heading) * this.speed,
-                         -1, width + 1 * 2);
-      this.pos[1] = Boid.wrap(this.pos[1] + Math.sin(this.heading) * this.speed,
-                         -1, height + 1 * 2);
+    // var padding = game.padding;
+    var width = this.game.width, height = this.game.height;
+    this.pos[0] = Boid.wrap(this.pos[0] + Math.cos(this.heading) * this.speed,
+                       -1, width + 1 * 2);
+    this.pos[1] = Boid.wrap(this.pos[1] + Math.sin(this.heading) * this.speed,
+                       -1, height + 1 * 2);
   };
 
 })(this);
