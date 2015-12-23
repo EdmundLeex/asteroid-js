@@ -1,5 +1,9 @@
 class Api::SupersonicPaperPlaneController < ApplicationController
+	BLACK_LIST = %w[< >]
+
 	def create_record
+		nickname = params[:nickname]
+		BLACK_LIST.each { |bl| nickname.gsub!(bl, "\#{bl}") }
 		record = SupersonicPaperPlane.new(name: params[:nickname])
 		record.score = params[:points]
 
